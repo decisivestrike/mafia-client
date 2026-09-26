@@ -7,7 +7,9 @@
     "check-signatures": "npm audit signatures",
     "dev": "next dev",
     "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
     "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
     "start": "next start"
   },
   "dependencies": {

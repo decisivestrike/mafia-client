@@ -8,8 +8,12 @@
     "typeAware": true,
     "typeCheck": true
   },
-  "plugins": ["react", "typescript", "oxc", "react-perf", "nextjs"],
+  "plugins": ["react", "typescript", "oxc", "react-perf", "nextjs", "import"],
   "rules": {
+    "import/no-cycle": "error",
+    "react/function-component-definition": "warn",
+    "react/jsx-pascal-case": "warn",
+    "react/no-danger": "warn",
     "react/only-export-components": [
       "warn",
       {
