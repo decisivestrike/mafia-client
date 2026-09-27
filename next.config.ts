@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
     tsconfigPath: 'tsconfig.json',
   },
+  experimental: {
+    typedEnv: true,
+  },
   turbopack: {
     root: __dirname,
   },
