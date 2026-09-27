@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { loginSchema } from './login';
+import { loginSchema } from './login-schema';
 
 export type RegisterSchema = z.infer<typeof registerSchema>;
 

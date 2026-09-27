@@ -1,7 +1,7 @@
 import { Oswald, Inter, JetBrains_Mono } from 'next/font/google';
+import './globals.css';
 
 import type { Metadata } from 'next';
-import './globals.css';
 
 const oswald = Oswald({
   variable: '--font-oswald',

@@ -1,32 +1,44 @@
 'use client';
 
 import { Form } from '@base-ui/react';
+import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
+import { login } from '../api/login';
 import { placeholder } from '../placeholders';
-import { LoginSchema, loginSchema } from '../schemas/login';
-import { validateForm } from '../shared';
+import { loginSchema } from '../schemas/login-schema';
+import { ErrorMessages, validateForm } from '../shared';
 import { Button, Field } from '@/shared/components';
 
-function login(credentials: LoginSchema) {
-  console.log(credentials);
-}
-
 export default function LoginForm() {
-  const [errors, setErrors] = useState({});
+  const [formErrors, setFormErrors] = useState<ErrorMessages<typeof loginSchema>>(
+    {},
+  );
+  const router = useRouter();
 
-  const onSubmit = useCallback(async (formValues: Form.Values) => {
-    const result = validateForm(loginSchema, formValues);
+  const onSubmit = useCallback(
+    async (formValues: Form.Values) => {
+      const result = validateForm(loginSchema, formValues);
 
-    if (result.ok) {
-      login(result.data);
-    } else {
-      setErrors(result.errors);
-    }
-  }, []);
+      if (!result.ok) {
+        setFormErrors(result.errors);
+        return;
+      }
+
+      const { name, password } = result.data;
+      const { ok, body } = await login(name, password);
+
+      if (ok) {
+        router.replace('/profile');
+      } else {
+        console.error(body.details);
+      }
+    },
+    [router],
+  );
 
   return (
     <Form
-      errors={errors}
+      errors={formErrors}
       onFormSubmit={onSubmit}
       className="flex w-75 flex-col gap-4"
     >

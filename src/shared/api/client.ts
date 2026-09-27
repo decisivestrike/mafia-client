@@ -1,41 +1,43 @@
 import { getAccessToken, refreshTokens } from './refresh';
 
+/** fetch для эндпоинтов, требующих авторизацию */
 export async function fetchAuthorized(
   input: string | URL | Request,
   init: RequestInit = {},
 ): Promise<Response> {
-  const { headers, ...rest } = init;
-  let retry = true;
+  let accessToken = getAccessToken();
 
-  const finalHeaders = new Headers(headers);
-  const accessToken = getAccessToken();
-  if (accessToken) {
-    finalHeaders.set('Authorization', `Bearer ${accessToken}`);
+  // Есть мы сделали рефреш, но все равно 401, то повторный рефреш не делаем
+  let refreshed = false;
+
+  if (accessToken === null) {
+    accessToken = await refreshTokens();
+    refreshed = true;
   }
 
-  const response = await fetch(input, {
-    ...rest,
-    headers: finalHeaders,
-  });
+  let response = await fetchWithBearer(input, accessToken, init);
 
-  // Если 401 и это не повторный заход - пробуем refresh
-  if (response.status === 401 && retry) {
-    try {
-      const newToken = await refreshTokens();
-
-      // повторяем исходный запрос с новым токеном
-      const retryHeaders = new Headers(headers);
-      retryHeaders.set('Authorization', `Bearer ${newToken}`);
-
-      return fetch(input, {
-        ...rest,
-        headers: retryHeaders,
-      });
-    } catch {
-      // refresh не удался — отдаём оригинальный 401
-      return response;
-    }
+  if (response.status === 401 && !refreshed) {
+    accessToken = await refreshTokens();
+    response = await fetchWithBearer(input, accessToken, init);
   }
 
   return response;
+}
+
+/** Добавляет/перезаписывает заголовок Authorization */
+function fetchWithBearer(
+  input: string | URL | Request,
+  token: string,
+  init: RequestInit = {},
+) {
+  const { headers, ...rest } = init;
+
+  const headersWithBearer = new Headers(headers);
+  headersWithBearer.set('Authorization', `Bearer ${token}`);
+
+  return fetch(input, {
+    ...rest,
+    headers: headersWithBearer,
+  });
 }

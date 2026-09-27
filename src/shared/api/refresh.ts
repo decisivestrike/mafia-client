@@ -1,37 +1,54 @@
 import { url } from './url';
 
-let tokensPromise: Promise<string> | null = null;
+export interface JwtTokens {
+  accessToken: string;
+  refreshToken: string;
+}
+
+let refreshPromise: Promise<string> | null = null;
 let accessToken: string | null = null;
 
 export function getAccessToken() {
   return accessToken;
 }
 
-/** Возвращает AccessToken */
-export async function refreshTokens(): Promise<string> {
-  if (tokensPromise !== null) return tokensPromise;
+export class RefreshError extends Error {}
 
-  tokensPromise = (async () => {
-    try {
-      const response = await fetch(url('/user/refresh'), {
-        method: 'POST',
-        credentials: 'include', // refresh-токен в httpOnly cookie
-      });
+/**
+ * Обновляет токены и возвращает accessToken
+ * @throws при ошибке сети
+ */
+export function refreshTokens(): Promise<string> {
+  if (refreshPromise !== null) return refreshPromise;
 
-      if (!response.ok) {
-        accessToken = null;
-        // здесь можно редиректить на /login
-        throw new Error('Refresh failed');
-      }
+  refreshPromise = createRefreshPromise();
 
-      const data = await response.json();
-      accessToken = data.accessToken;
-
-      return data.accessToken as string;
-    } finally {
-      tokensPromise = null;
-    }
-  })();
-
-  return tokensPromise;
+  return refreshPromise;
 }
+
+async function createRefreshPromise(): Promise<string> {
+  try {
+    const response = await fetch(url('/user/refresh'), {
+      method: 'POST',
+      credentials: 'include', // refresh-токен в httpOnly cookie
+    });
+
+    if (!response.ok) {
+      accessToken = null;
+      throw new RefreshError();
+    }
+
+    const data = await response.json();
+    accessToken = data.accessToken;
+
+    return data.accessToken as string;
+  } finally {
+    refreshPromise = null;
+  }
+}
+
+// function reset(promise: Promise<string>): void {
+//   if (refreshPromise === promise) {
+//     refreshPromise = null;
+//   }
+// }

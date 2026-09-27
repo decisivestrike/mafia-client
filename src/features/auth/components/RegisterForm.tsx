@@ -1,28 +1,44 @@
 'use client';
 
 import { Form } from '@base-ui/react';
+import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
+import { register } from '../api/register';
 import { placeholder } from '../placeholders';
-import { registerSchema } from '../schemas/register';
-import { validateForm } from '../shared';
+import { registerSchema } from '../schemas/register-schema';
+import { ErrorMessages, validateForm } from '../shared';
 import { Button, Field } from '@/shared/components';
 
 export default function RegisterForm() {
-  const [errors, setErrors] = useState({});
+  const [formErrors, setFormErrors] = useState<ErrorMessages<typeof registerSchema>>(
+    {},
+  );
+  const router = useRouter();
 
-  const onSubmit = useCallback(async (formValues: Form.Values) => {
-    const result = validateForm(registerSchema, formValues);
+  const onSubmit = useCallback(
+    async (formValues: Form.Values) => {
+      const result = validateForm(registerSchema, formValues);
 
-    if (result.ok) {
-      console.log(result.data);
-    } else {
-      setErrors(result.errors);
-    }
-  }, []);
+      if (!result.ok) {
+        setFormErrors(result.errors);
+        return;
+      }
+
+      const { email, name, password } = result.data;
+      const { ok, body } = await register(email, name, password);
+
+      if (ok) {
+        router.replace('/profile');
+      } else {
+        console.error(body.details);
+      }
+    },
+    [router],
+  );
 
   return (
     <Form
-      errors={errors}
+      errors={formErrors}
       onFormSubmit={onSubmit}
       className="flex w-75 flex-col gap-4"
     >
