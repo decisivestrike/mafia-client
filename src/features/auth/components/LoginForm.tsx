@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react';
 import { login } from '../api/login';
 import { placeholder } from '../placeholders';
 import { loginSchema } from '../schemas/login-schema';
-import { ErrorMessages, validateForm } from '../shared';
+import { type ErrorMessages, validateForm } from '../shared';
 import { Button, Field } from '@/shared/components';
 
 export default function LoginForm() {

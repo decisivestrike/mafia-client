@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react';
 import { register } from '../api/register';
 import { placeholder } from '../placeholders';
 import { registerSchema } from '../schemas/register-schema';
-import { ErrorMessages, validateForm } from '../shared';
+import { type ErrorMessages, validateForm } from '../shared';
 import { Button, Field } from '@/shared/components';
 
 export default function RegisterForm() {

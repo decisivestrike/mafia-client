@@ -1,4 +1,6 @@
-import { ApiError, JwtTokens, url } from '@/shared/api';
+import { url } from '@/shared/api';
+
+import type { ApiError, JwtTokens } from '@/shared/api';
 
 export type LoginResult =
   | { ok: true; body: JwtTokens }

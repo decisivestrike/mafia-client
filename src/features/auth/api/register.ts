@@ -1,4 +1,6 @@
-import { type JwtTokens, ApiError, url } from '@/shared/api';
+import { url } from '@/shared/api';
+
+import type { JwtTokens, ApiError } from '@/shared/api';
 
 export interface UserData extends JwtTokens {
   status: string;
