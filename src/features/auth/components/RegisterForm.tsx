@@ -25,12 +25,12 @@ export default function RegisterForm() {
       }
 
       const { email, name, password } = result.data;
-      const { ok, body } = await register(email, name, password);
+      const error = await register(email, name, password);
 
-      if (ok) {
+      if (error === null) {
         router.replace('/profile');
       } else {
-        console.error(body.details);
+        console.error(error.details);
       }
     },
     [router],

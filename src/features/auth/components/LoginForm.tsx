@@ -25,12 +25,12 @@ export default function LoginForm() {
       }
 
       const { name, password } = result.data;
-      const { ok, body } = await login(name, password);
+      const error = await login(name, password);
 
-      if (ok) {
+      if (error === null) {
         router.replace('/profile');
       } else {
-        console.error(body.details);
+        console.error(error.details);
       }
     },
     [router],

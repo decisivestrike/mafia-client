@@ -1,4 +1,5 @@
 import { url } from '@/shared/api';
+import { setAccessToken } from '@/shared/api/refresh';
 
 import type { JwtTokens, ApiError } from '@/shared/api';
 
@@ -7,15 +8,11 @@ export interface UserData extends JwtTokens {
   message: string;
 }
 
-export type RegisterResult =
-  | { ok: true; body: UserData }
-  | { ok: false; body: ApiError };
-
 export async function register(
   email: string,
   name: string,
   password: string,
-): Promise<RegisterResult> {
+): Promise<ApiError | null> {
   const response = await fetch(url('/user/register'), {
     method: 'POST',
     headers: {
@@ -26,5 +23,13 @@ export async function register(
 
   const body = await response.json();
 
-  return { ok: response.ok, body };
+  if (response.ok) {
+    const tokens = body as UserData;
+    setAccessToken(tokens.accessToken);
+    localStorage.setItem('refreshToken', tokens.refreshToken);
+
+    return null;
+  }
+
+  return body as ApiError;
 }

@@ -1,12 +1,12 @@
 import { url } from '@/shared/api';
+import { setAccessToken } from '@/shared/api/refresh';
 
 import type { ApiError, JwtTokens } from '@/shared/api';
 
-export type LoginResult =
-  | { ok: true; body: JwtTokens }
-  | { ok: false; body: ApiError };
-
-export async function login(name: string, password: string): Promise<LoginResult> {
+export async function login(
+  name: string,
+  password: string,
+): Promise<ApiError | null> {
   const formData = new FormData();
   formData.append('username', name);
   formData.append('password', password);
@@ -18,5 +18,13 @@ export async function login(name: string, password: string): Promise<LoginResult
 
   const body = await response.json();
 
-  return { ok: response.ok, body };
+  if (response.ok) {
+    const tokens = body as JwtTokens;
+    setAccessToken(tokens.accessToken);
+    localStorage.setItem('refreshToken', tokens.refreshToken);
+
+    return null;
+  }
+
+  return body as ApiError;
 }

@@ -1,5 +1,7 @@
 import { url } from './url';
 
+import type { ApiError } from './error';
+
 export interface JwtTokens {
   accessToken: string;
   refreshToken: string;
@@ -10,6 +12,10 @@ let accessToken: string | null = null;
 
 export function getAccessToken() {
   return accessToken;
+}
+
+export function setAccessToken(token: string) {
+  accessToken = token;
 }
 
 export class RefreshError extends Error {}
@@ -28,18 +34,26 @@ export function refreshTokens(): Promise<string> {
 
 async function createRefreshPromise(): Promise<string> {
   try {
+    const refreshToken = localStorage.getItem('refreshToken');
+    console.log(refreshToken);
+
     const response = await fetch(url('/user/refresh'), {
       method: 'POST',
+      body: JSON.stringify({ refreshToken }),
       credentials: 'include', // refresh-токен в httpOnly cookie
     });
 
     if (!response.ok) {
+      const data = (await response.json()) as ApiError;
+      console.log(data.details);
+
       accessToken = null;
-      throw new RefreshError();
+      throw new RefreshError('Не могу обновить токены');
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as JwtTokens;
     accessToken = data.accessToken;
+    localStorage.setItem('refreshToken', data.refreshToken);
 
     return data.accessToken as string;
   } finally {
