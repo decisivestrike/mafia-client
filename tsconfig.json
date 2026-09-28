@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "allowUnreachableCode": false,
     "esModuleInterop": true,
     "incremental": true,
     "isolatedModules": true,
@@ -12,8 +13,6 @@
     "noImplicitOverride": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "allowUnreachableCode": false,
-    "verbatimModuleSyntax": true,
     "paths": {
       "@/*": ["./src/*"]
     },
@@ -25,7 +24,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es2022"
+    "target": "es2022",
+    "verbatimModuleSyntax": true
   },
   "exclude": ["node_modules"],
   "include": [
