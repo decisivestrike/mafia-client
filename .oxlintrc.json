@@ -20,5 +20,6 @@
         "allowExportNames": ["metadata"]
       }
     ]
-  }
+  },
+  "jsPlugins": ["@tanstack/eslint-plugin-query"]
 }
