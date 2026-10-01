@@ -4,9 +4,9 @@ import { Form } from '@base-ui/react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import { login } from '../api/login';
-import { placeholder } from '../placeholders';
+import { placeholder } from '../common/placeholders';
+import { type ErrorMessages, validateForm } from '../common/validator';
 import { loginSchema } from '../schemas/login-schema';
-import { type ErrorMessages, validateForm } from '../shared';
 import { Button, Field } from '@/shared/components';
 
 export default function LoginForm() {
