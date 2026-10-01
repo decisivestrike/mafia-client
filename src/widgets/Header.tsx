@@ -1,5 +1,6 @@
 import { cn } from 'cn';
 import Link from 'next/link';
+// import { ThemeToggle } from '@/features/theme/components/ThemeToggle';
 import { Button } from '@/shared/components';
 
 const linkToProfile = <Link href="/profile" />;
@@ -27,6 +28,7 @@ export default function Header({ className }: HeaderProps) {
           </li>
         </ul>
       </nav>
+      {/* <ThemeToggle /> */}
     </header>
   );
 }

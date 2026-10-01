@@ -1,5 +1,6 @@
-import { inter, jetBrainsMono, oswald } from '@/shared/config/fonts';
-import './globals.css';
+import { inter, jetBrainsMono, oswald } from '@/_app/config/fonts';
+import '../_app/globals.css';
+import { ThemeProvider } from '@/_app/providers/theme';
 
 import type { Metadata } from 'next';
 
@@ -33,9 +34,13 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html
       lang="ru"
-      className={`${oswald.variable} ${inter.variable} ${jetBrainsMono.variable} antialiased motion-safe:scroll-smooth`}
+      className={`${oswald.variable} ${inter.variable} ${jetBrainsMono.variable} antialiased`}
+      suppressHydrationWarning
     >
-      <body className="bg-white dark:bg-black">{children}</body>
+      <head />
+      <body className="bg-white dark:bg-black">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
