@@ -1,6 +1,6 @@
 import { inter, jetBrainsMono, oswald } from '@/_app/config/fonts';
 import '../_app/globals.css';
-import { ThemeProvider } from '@/_app/providers/theme';
+import { ThemeProvider } from '@/features/theme';
 
 import type { Metadata } from 'next';
 
