@@ -21,9 +21,9 @@
     "sortScripts": true
   },
   "sortTailwindcss": {
-    "functions": ["cn"],
+    "functions": ["cn", "concat"],
     "preserveWhitespace": false,
-    "stylesheet": "./src/app/globals.css"
+    "stylesheet": "./src/_app/globals.css"
   },
   "tabWidth": 2,
   "trailingComma": "all",
