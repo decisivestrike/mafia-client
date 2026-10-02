@@ -9,7 +9,6 @@ export default function Home() {
     <div className="flex h-full w-full items-center justify-center">
       <main className="w-75 text-center">
         <h1 className="mb-10 font-medium">Мафия</h1>
-
         <div className="flex justify-center gap-2">
           <Button render={linkToLogin} nativeButton={false}>
             Вход
