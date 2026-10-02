@@ -1,17 +1,20 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Toggle, ToggleGroup } from '@/shared/components';
 import { useIsHydrated } from '@/shared/hooks';
 
-type Theme = 'dark' | 'light' | 'system';
+import type { Theme } from '..';
 
 export function ThemeToggleGroup() {
   const isHydrated = useIsHydrated();
   const { theme, setTheme } = useTheme();
 
-  const themeValue = theme !== undefined ? ([theme] as Theme[]) : undefined;
+  const themeValue = useMemo<Theme[]>(
+    () => (isHydrated ? [theme as Theme] : []),
+    [theme, isHydrated],
+  );
 
   const onThemeChange = useCallback(
     function (groupValue: Theme[]) {
@@ -24,10 +27,6 @@ export function ThemeToggleGroup() {
     [setTheme],
   );
 
-  if (!isHydrated) {
-    return null;
-  }
-
   return (
     <ToggleGroup<Theme>
       aria-label="Theme"
@@ -37,7 +36,7 @@ export function ThemeToggleGroup() {
       <Toggle<Theme>
         aria-label="Align left"
         value="dark"
-        className="px-2 py-1"
+        className="px-2 py-1 text-sm"
         variant="primary"
       >
         Темная
@@ -45,7 +44,7 @@ export function ThemeToggleGroup() {
       <Toggle<Theme>
         aria-label="Align center"
         value="light"
-        className="px-2 py-1"
+        className="px-2 py-1 text-sm"
         variant="primary"
       >
         Светлая
@@ -53,7 +52,7 @@ export function ThemeToggleGroup() {
       <Toggle<Theme>
         aria-label="Align right"
         value="system"
-        className="px-2 py-1"
+        className="px-2 py-1 text-sm"
         variant="primary"
       >
         Системная
