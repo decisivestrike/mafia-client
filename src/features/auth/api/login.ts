@@ -1,7 +1,7 @@
 import { url } from '@/shared/api';
 import { setAccessToken } from '@/shared/api/refresh';
 
-import type { ApiError, JwtTokens } from '@/shared/api';
+import type { AccessTokenResponse, ApiError } from '@/shared/api';
 
 export async function login(
   name: string,
@@ -14,14 +14,14 @@ export async function login(
   const response = await fetch(url('/user/login'), {
     method: 'POST',
     body: formData,
+    credentials: 'include',
   });
 
   const body = await response.json();
 
   if (response.ok) {
-    const tokens = body as JwtTokens;
+    const tokens = body as AccessTokenResponse;
     setAccessToken(tokens.accessToken);
-    localStorage.setItem('refreshToken', tokens.refreshToken);
 
     return null;
   }

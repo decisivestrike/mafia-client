@@ -1,12 +1,7 @@
 import { url } from '@/shared/api';
 import { setAccessToken } from '@/shared/api/refresh';
 
-import type { JwtTokens, ApiError } from '@/shared/api';
-
-export interface UserData extends JwtTokens {
-  status: string;
-  message: string;
-}
+import type { AccessTokenResponse, ApiError } from '@/shared/api';
 
 export async function register(
   email: string,
@@ -19,14 +14,14 @@ export async function register(
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email, username: name, password }),
+    credentials: 'include',
   });
 
   const body = await response.json();
 
   if (response.ok) {
-    const tokens = body as UserData;
+    const tokens = body as AccessTokenResponse;
     setAccessToken(tokens.accessToken);
-    localStorage.setItem('refreshToken', tokens.refreshToken);
 
     return null;
   }

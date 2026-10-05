@@ -2,9 +2,8 @@ import { url } from './url';
 
 import type { ApiError } from './error';
 
-export interface JwtTokens {
+export interface AccessTokenResponse {
   accessToken: string;
-  refreshToken: string;
 }
 
 let refreshPromise: Promise<string> | null = null;
@@ -34,19 +33,9 @@ export function refreshTokens(): Promise<string> {
 
 async function createRefreshPromise(): Promise<string> {
   try {
-    const refreshToken = localStorage.getItem('refreshToken');
-
-    const body = JSON.stringify({ refreshToken });
-
-    console.log(body);
-
     const response = await fetch(url('/user/refresh'), {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body,
-      // credentials: 'include', // refresh-токен в httpOnly cookie
+      credentials: 'include', // refresh-токен в httpOnly cookie
     });
 
     if (!response.ok) {
@@ -57,18 +46,11 @@ async function createRefreshPromise(): Promise<string> {
       throw new RefreshError('Не могу обновить токены');
     }
 
-    const data = (await response.json()) as JwtTokens;
-    accessToken = data.accessToken;
-    localStorage.setItem('refreshToken', data.refreshToken);
+    const data = (await response.json()) as AccessTokenResponse;
+    setAccessToken(data.accessToken);
 
     return data.accessToken as string;
   } finally {
     refreshPromise = null;
   }
 }
-
-// function reset(promise: Promise<string>): void {
-//   if (refreshPromise === promise) {
-//     refreshPromise = null;
-//   }
-// }
