@@ -35,17 +35,23 @@ export function refreshTokens(): Promise<string> {
 async function createRefreshPromise(): Promise<string> {
   try {
     const refreshToken = localStorage.getItem('refreshToken');
-    console.log(refreshToken);
+
+    const body = JSON.stringify({ refreshToken });
+
+    console.log(body);
 
     const response = await fetch(url('/user/refresh'), {
       method: 'POST',
-      body: JSON.stringify({ refreshToken }),
-      credentials: 'include', // refresh-токен в httpOnly cookie
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body,
+      // credentials: 'include', // refresh-токен в httpOnly cookie
     });
 
     if (!response.ok) {
       const data = (await response.json()) as ApiError;
-      console.log(data.details);
+      console.log('Data:', data);
 
       accessToken = null;
       throw new RefreshError('Не могу обновить токены');
