@@ -1,7 +1,17 @@
-# Mafia Client
+# Mafia
 
 ![React](https://img.shields.io/badge/react-232730?style=for-the-badge&logo=react)
 ![Next JS](https://img.shields.io/badge/Next.js-232730?style=for-the-badge&logo=next.js)
 ![Tailwind CSS](https://img.shields.io/badge/tailwindcss-232730?style=for-the-badge&logo=tailwind-css)
 
-React + Next + Tailwind + Base UI
+Мафия — это игра в жанре социальной дедукции, где игроки делятся на команды мирных жителей и мафии, пытаясь распознать или скрыть свою роль через голосования и обсуждения.
+
+## Технологический стек
+
+React + Next + Tailwind CSS + Base UI
+
+## Запуск
+
+```bash
+npm run dev
+```
