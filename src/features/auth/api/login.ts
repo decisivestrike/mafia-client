@@ -1,5 +1,5 @@
-import { url } from '@/shared/api';
-import { setAccessToken } from '@/shared/api/refresh';
+import { tokenService } from '@/shared/api/token-service';
+import { fetchApi } from '@/shared/api/utils';
 
 import type { AccessTokenResponse, ApiError } from '@/shared/api';
 
@@ -11,7 +11,7 @@ export async function login(
   formData.append('username', name);
   formData.append('password', password);
 
-  const response = await fetch(url('/user/login'), {
+  const response = await fetchApi('/user/login', {
     method: 'POST',
     body: formData,
     credentials: 'include',
@@ -21,7 +21,7 @@ export async function login(
 
   if (response.ok) {
     const tokens = body as AccessTokenResponse;
-    setAccessToken(tokens.accessToken);
+    tokenService.setAccessToken(tokens.accessToken);
 
     return null;
   }

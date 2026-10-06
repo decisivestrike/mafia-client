@@ -1,4 +1,4 @@
-export { type AccessTokenResponse } from './refresh';
+export { type AccessTokenResponse } from './token-service';
 export { fetchAuthorized } from './client';
 export { type ApiError } from './error';
-export { url } from './url';
+export { tokenService } from './token-service';
