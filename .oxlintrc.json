@@ -4,13 +4,24 @@
     "correctness": "error",
     "perf": "error"
   },
+  "jsPlugins": ["@tanstack/eslint-plugin-query"],
   "options": {
     "typeAware": true,
     "typeCheck": true
   },
   "plugins": ["react", "typescript", "oxc", "react-perf", "nextjs", "import"],
   "rules": {
+    "@tanstack/query/exhaustive-deps": "error",
+    "@tanstack/query/infinite-query-property-order": "error",
+    "@tanstack/query/mutation-property-order": "error",
+    "@tanstack/query/no-rest-destructuring": "error",
+    "@tanstack/query/no-unstable-deps": "error",
+    "@tanstack/query/no-void-query-fn": "error",
+    "@tanstack/query/prefer-query-options": "off",
+    "@tanstack/query/stable-query-client": "error",
+
     "import/no-cycle": "error",
+
     "react/function-component-definition": "warn",
     "react/jsx-pascal-case": "warn",
     "react/no-danger": "warn",
@@ -20,6 +31,5 @@
         "allowExportNames": ["metadata"]
       }
     ]
-  },
-  "jsPlugins": ["@tanstack/eslint-plugin-query"]
+  }
 }
