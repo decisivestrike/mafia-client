@@ -1,9 +1,9 @@
-import ProfileInfo from '@/entities/user/components/ProfileInfo';
+import { ProfileCard } from '@/entities/user/components/ProfileCard';
 
 export default function ProfilePage() {
   return (
     <div>
-      <ProfileInfo />
+      <ProfileCard />
     </div>
   );
 }

@@ -1,3 +1,3 @@
-export function concat(...parts: string[]): string {
-  return parts.join(' ');
+export function concat(...parts: (string | undefined)[]): string {
+  return parts.filter(Boolean).join(' ');
 }

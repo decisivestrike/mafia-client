@@ -1,27 +1,24 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-import { getMe } from '../api/get-me';
+import type User from '../models/user';
 
-export default function ProfileInfo() {
-  const { data, error, isPending, isError } = useQuery({
-    queryKey: ['profile'],
-    queryFn: () => getMe(),
-  });
+interface Props {
+  user: User;
+}
 
-  if (isPending) {
-    return <span>Загрузка...</span>;
-  }
-
-  if (isError) {
-    return <span>Ошибка: {error.message}</span>;
-  }
-
+export default function ProfileInfo({ user: { name, id, email } }: Props) {
   return (
-    <div>
-      <h2>{data.name}</h2>
-      <p className="font-mono text-xs">{data.id}</p>
-      <p>{data.email}</p>
+    <div className="flex flex-col gap-1">
+      <div className="mb-2">
+        <div className="font-mono text-[10px]">Оперативный псевдоним</div>
+        <h3>{name}</h3>
+      </div>
+      <div className="text-sm">
+        Идентификатор: <span className="font-mono text-xs">{id}</span>
+      </div>
+      <div className="text-sm">
+        Почта: <span className="font-mono text-xs">{email}</span>
+      </div>
     </div>
   );
 }

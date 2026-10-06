@@ -22,9 +22,18 @@ export namespace Avatar {
     return (
       <AvatarBase.Fallback
         className={cn(
-          'flex size-full items-center justify-center text-sm',
+          'flex size-full items-center justify-center text-sm font-semibold uppercase',
           className,
         )}
+        {...props}
+      />
+    );
+  }
+
+  export function Image({ className, ...props }: AvatarBase.Image.Props) {
+    return (
+      <AvatarBase.Image
+        className={cn('size-full object-cover', className)}
         {...props}
       />
     );

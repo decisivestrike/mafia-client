@@ -54,6 +54,30 @@
   p {
     @apply text-lg;
   }
+
+  code {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  .spinner {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotationBack 1s ease-in-out infinite reverse;
+
+    @apply text-black dark:text-white;
+  }
+
+  @keyframes rotationBack {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
 }
 
 @theme inline {
