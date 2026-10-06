@@ -1,6 +1,9 @@
+'use client';
+
 import { cn } from 'cn';
 import Link from 'next/link';
-// import { ThemeToggle } from '@/features/theme/components/ThemeToggle';
+import { useRouter } from 'next/navigation';
+import { logout } from '@/features/auth';
 import { Button } from '@/shared/components';
 
 const linkToProfile = <Link href="/profile" />;
@@ -12,6 +15,8 @@ interface HeaderProps {
 }
 
 export default function Header({ className }: HeaderProps) {
+  const router = useRouter();
+
   return (
     <header className={cn('flex items-center justify-between px-3 py-2', className)}>
       <div
@@ -35,6 +40,14 @@ export default function Header({ className }: HeaderProps) {
           <li>
             <Button render={linkToSettings} nativeButton={false}>
               Настройки
+            </Button>
+          </li>
+          <li>
+            <Button
+              // oxlint-disable-next-line react-perf/jsx-no-new-function-as-prop
+              onClick={() => logout().then(ok => ok && router.replace('/login'))}
+            >
+              Выйти
             </Button>
           </li>
         </ul>

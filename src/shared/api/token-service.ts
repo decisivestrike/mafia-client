@@ -20,6 +20,10 @@ export class TokenService {
     this.accessToken = token;
   }
 
+  deleteAccessToken() {
+    this.accessToken = null;
+  }
+
   /**
    * Обновляет токены и возвращает accessToken
    * @throws при ошибке сети
@@ -45,7 +49,7 @@ export class TokenService {
         const data = (await response.json()) as ApiError;
         this.accessToken = null;
 
-        throw new RefreshError(`Не могу обновить токены: ${data.details}`);
+        throw new RefreshError(`Не могу обновить токены: ${data.detail}`);
       }
 
       const data = (await response.json()) as AccessTokenResponse;
