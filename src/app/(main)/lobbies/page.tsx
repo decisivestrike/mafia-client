@@ -1,7 +1,9 @@
+import { LobbyList } from '@/entities/lobby/components/LobbyList';
+
 export default function LobbiesPage() {
   return (
     <div>
-      <h2>Лобби</h2>
+      <LobbyList />
     </div>
   );
 }
