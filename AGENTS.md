@@ -5,6 +5,7 @@
 ## Технологии
 
 **Фреймворки и библиотеки:**
+
 - Next.js 16 (App Router), React 19
 - @base-ui/react
 - TanStack React Query
@@ -15,11 +16,13 @@
 - Jotai v3
 
 **Инструменты:**
+
 - TypeScript 7
 - oxlint / oxfmt
 - PostCSS
 
 **Инфраструктура:**
+
 - npm
 - TurboPack
 
