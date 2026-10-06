@@ -1,13 +1,5 @@
+import { type User } from '@/entities/user';
 import { fetchAuthorized } from '@/shared/api';
+import { createQuery } from '@/shared/api/query';
 
-import type User from '../models/user';
-
-export async function getProfileInfo() {
-  const response = await fetchAuthorized('/user/me');
-
-  if (!response.ok) {
-    throw new Error('Не могу получить данные профиля');
-  }
-
-  return (await response.json()) as User;
-}
+export const getProfileInfo = createQuery<User>()(() => fetchAuthorized('/user/me'));
