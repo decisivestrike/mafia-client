@@ -1,6 +1,6 @@
 'use client';
 
-import type User from '../models/user';
+import { type User } from '@/entities/user';
 
 interface Props {
   user: User;

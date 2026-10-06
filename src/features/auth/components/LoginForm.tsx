@@ -30,7 +30,7 @@ export default function LoginForm() {
       if (error === null) {
         router.replace('/profile');
       } else {
-        console.error(error.details);
+        console.error(error.detail);
       }
     },
     [router],
