@@ -1,19 +1,18 @@
-import { concat } from '../utils';
+import { cn } from 'cn';
 
 interface Props {
   className?: string;
-  size?: number;
 }
 
-export function Spinner({ className, size = 64 }: Props) {
+export function Spinner({ className }: Props) {
   return (
-    <div className={concat('spinner', `size-${size}`, className)}>
+    <div className={cn('spinner size-16', className)}>
       {/* oxlint-disable-next-line next/no-img-element */}
       <img
         src="/assets/revolver-cylinder.svg"
         alt="Spinner"
-        width={size}
-        height={size}
+        width="64"
+        height="64"
       />
     </div>
   );

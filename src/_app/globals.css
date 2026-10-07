@@ -62,11 +62,7 @@
 
 @layer components {
   .spinner {
-    display: block;
-    position: relative;
-    box-sizing: border-box;
     animation: rotationBack 1s ease-in-out infinite reverse;
-
     @apply text-black dark:text-white;
   }
 

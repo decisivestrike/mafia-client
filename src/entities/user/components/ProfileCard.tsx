@@ -1,13 +1,14 @@
 'use client';
 
-import { useProfileInfo } from '../hooks/useProfileInfo';
+import { useQuery } from '@tanstack/react-query';
+import { profileInfoOptions } from '../api/get-profile-info';
 import ProfileInfo from './ProfileInfo';
 import { UserAvatar } from './UserAvatar';
 import { Button, Spinner } from '@/shared/components';
 import { Stamp } from '@/shared/components/Stamp';
 
 export function ProfileCard() {
-  const { data, error, isPending, isError } = useProfileInfo();
+  const { data, error, isPending, isError } = useQuery(profileInfoOptions);
 
   if (isPending) {
     return <Spinner />;
