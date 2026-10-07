@@ -2,11 +2,13 @@ import * as z from 'zod';
 
 export type CreateLobbySchema = z.infer<typeof createLobbySchema>;
 
+export const minPlayers = 5;
+export const maxPlayers = 12;
+
 export const createLobbySchema = z.object({
-  maxPlayer: z
-    .string()
+  maxPlayers: z.coerce
+    .number()
     .min(1, 'Укажите количество игроков')
-    .refine(v => !Number.isNaN(Number(v)), 'Должно быть числом')
-    .refine(v => Number(v) >= 2, 'Минимум 2 игрока')
-    .refine(v => Number(v) <= 50, 'Максимум 50 игроков'),
+    .min(minPlayers, `Минимум ${minPlayers} игроков`)
+    .max(maxPlayers, `Максимум ${maxPlayers} игроков`),
 });
