@@ -16,7 +16,7 @@ export function LobbyList() {
   }
 
   if (data.length === 0) {
-    return <div>Нет доступных лобби</div>;
+    return <div className="font-body font-medium">Нет доступных лобби</div>;
   }
 
   return (
