@@ -1,6 +1,6 @@
 'use client';
 
-import { Form } from '@base-ui/react';
+import { Form, Toast } from '@base-ui/react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import { register } from '../api/register';
@@ -13,6 +13,7 @@ export default function RegisterForm() {
   const [formErrors, setFormErrors] = useState<ErrorMessages<typeof registerSchema>>(
     {},
   );
+  const toastManager = Toast.useToastManager();
   const router = useRouter();
 
   const onSubmit = useCallback(
@@ -30,10 +31,13 @@ export default function RegisterForm() {
       if (error === null) {
         router.replace('/profile');
       } else {
-        console.error(error.detail);
+        toastManager.add({
+          title: 'Ошибка',
+          description: error.detail,
+        });
       }
     },
-    [router],
+    [router, toastManager],
   );
 
   return (

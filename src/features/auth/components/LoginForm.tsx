@@ -1,6 +1,6 @@
 'use client';
 
-import { Form } from '@base-ui/react';
+import { Form, Toast } from '@base-ui/react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import { login } from '../api/login';
@@ -10,10 +10,11 @@ import { loginSchema } from '../schemas/login-schema';
 import { Button, Field } from '@/shared/components';
 
 export default function LoginForm() {
+  const router = useRouter();
+  const toastManager = Toast.useToastManager();
   const [formErrors, setFormErrors] = useState<ErrorMessages<typeof loginSchema>>(
     {},
   );
-  const router = useRouter();
 
   const onSubmit = useCallback(
     async (formValues: Form.Values) => {
@@ -30,10 +31,13 @@ export default function LoginForm() {
       if (error === null) {
         router.replace('/profile');
       } else {
-        console.error(error.detail);
+        toastManager.add({
+          title: 'Ошибка',
+          description: error.detail,
+        });
       }
     },
-    [router],
+    [router, toastManager],
   );
 
   return (

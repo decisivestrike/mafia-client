@@ -1,6 +1,10 @@
 import { inter, jetBrainsMono, oswald } from '@/_app/config/fonts';
 import '../_app/globals.css';
 import { ThemeProvider } from '@/features/theme';
+import {
+  ToastPortal,
+  ToastProvider,
+} from '@/features/toast/providers/ToastProvider';
 
 import type { Metadata } from 'next';
 
@@ -39,7 +43,12 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     >
       <head />
       <body className="bg-white dark:bg-black">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <ToastProvider>
+            {children}
+            <ToastPortal />
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
