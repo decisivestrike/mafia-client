@@ -1,6 +1,8 @@
 import { Toast } from '@base-ui/react';
 import { ToastList } from '../components/ToastList';
 
+import type { ReactNode } from 'react';
+
 export function ToastPortal() {
   return (
     <Toast.Portal>
@@ -11,6 +13,11 @@ export function ToastPortal() {
   );
 }
 
-export function ToastProvider(props: Toast.Provider.Props) {
-  return <Toast.Provider {...props} />;
+export function ToastProvider({ children }: { children: ReactNode }) {
+  return (
+    <Toast.Provider>
+      {children}
+      <ToastPortal />
+    </Toast.Provider>
+  );
 }

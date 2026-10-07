@@ -1,4 +1,4 @@
-import { QueryClientProvider } from '@/_app/providers/query-client';
+import { QueryClientProvider } from '@/_app/providers/query-client-provider';
 import Header from '@/widgets/Header';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {

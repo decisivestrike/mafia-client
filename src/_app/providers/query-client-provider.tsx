@@ -3,20 +3,12 @@
 import {
   QueryClient,
   QueryClientProvider as TanstackQueryClientProvider,
-  type QueryClientConfig,
 } from '@tanstack/react-query';
+import { queryClientConfig } from '../config/query-client-config';
 
 import type { ReactNode } from 'react';
 
 let browserQueryClient: QueryClient | undefined;
-
-const queryClientConfig: QueryClientConfig = {
-  defaultOptions: {
-    queries: {
-      staleTime: 60 * 1000,
-    },
-  },
-};
 
 function createQueryClient() {
   return new QueryClient(queryClientConfig);
