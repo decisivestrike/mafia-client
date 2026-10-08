@@ -4,6 +4,7 @@ import { useIsHydrated } from '@shared/lib';
 import { Toggle, ToggleGroup } from '@shared/ui';
 import { useTheme } from 'next-themes';
 import { useCallback, useMemo } from 'react';
+import styles from './theme-toggle-group.module.css';
 
 import type { Theme } from '..';
 
@@ -33,27 +34,20 @@ export function ThemeToggleGroup() {
       value={themeValue}
       onValueChange={onThemeChange}
     >
-      <Toggle<Theme>
-        aria-label="Align left"
-        value="dark"
-        className="px-2 py-1 text-sm"
-        variant="primary"
-      >
+      <Toggle<Theme> aria-label="Align left" value="dark" className={styles.Option}>
         Темная
       </Toggle>
       <Toggle<Theme>
         aria-label="Align center"
         value="light"
-        className="px-2 py-1 text-sm"
-        variant="primary"
+        className={styles.Option}
       >
         Светлая
       </Toggle>
       <Toggle<Theme>
         aria-label="Align right"
         value="system"
-        className="px-2 py-1 text-sm"
-        variant="primary"
+        className={styles.Option}
       >
         Системная
       </Toggle>

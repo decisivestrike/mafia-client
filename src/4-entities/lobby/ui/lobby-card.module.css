@@ -1,0 +1,42 @@
+@layer components {
+  .Root {
+    display: flex;
+    min-width: 18rem;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    border: 1px solid oklch(14.5% 0 0deg);
+
+    &:where([data-theme='dark'] *) {
+      border-color: white;
+    }
+  }
+
+  .Separator {
+    height: 1px;
+    margin-bottom: 0.25rem;
+  }
+
+  .Line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .Name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .Value {
+    letter-spacing: 0.05em;
+  }
+
+  .Button {
+    margin-top: 0.5rem;
+  }
+}

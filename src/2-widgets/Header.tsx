@@ -1,10 +1,12 @@
 'use client';
 
 import { logout } from '@features/auth';
+import { font } from '@shared/config/fonts';
 import { Button } from '@shared/ui';
 import { cn } from 'cn';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import styles from './header.module.css';
 
 const linkToProfile = <Link href="/profile" />;
 const linkToLobbies = <Link href="/lobbies" />;
@@ -18,15 +20,12 @@ export default function Header({ className }: HeaderProps) {
   const router = useRouter();
 
   return (
-    <header className={cn('flex items-center justify-between px-3 py-2', className)}>
-      <div
-        className="hidden font-heading text-3xl font-medium sm:block"
-        aria-label="logo"
-      >
+    <header className={cn(styles.Header, className)}>
+      <div className={cn(styles.Logo, font.heading)} aria-label="logo">
         Мафия
       </div>
-      <nav aria-label="Основная навигация" className="block">
-        <ul className="flex gap-4">
+      <nav aria-label="Основная навигация" className={styles.Nav}>
+        <ul className={styles.List}>
           <li>
             <Button render={linkToProfile} nativeButton={false}>
               Профиль

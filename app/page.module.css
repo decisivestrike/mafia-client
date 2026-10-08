@@ -1,0 +1,25 @@
+@layer components {
+  .Page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .Main {
+    width: 18.75rem;
+    text-align: center;
+  }
+
+  .Title {
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+  }
+
+  .Actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}

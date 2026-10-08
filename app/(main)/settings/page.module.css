@@ -1,0 +1,13 @@
+@layer components {
+  .Title {
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .Grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+  }
+}

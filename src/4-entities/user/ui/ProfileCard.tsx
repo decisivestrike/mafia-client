@@ -4,6 +4,7 @@ import { Button, Spinner } from '@shared/ui';
 import { Stamp } from '@shared/ui/Stamp/Stamp';
 import { useQuery } from '@tanstack/react-query';
 import { profileInfoOptions } from '../api/get-profile-info';
+import styles from './profile-card.module.css';
 import ProfileInfo from './ProfileInfo';
 import { UserAvatar } from './UserAvatar';
 
@@ -19,13 +20,13 @@ export function ProfileCard() {
   }
 
   return (
-    <div className="flex min-w-156 flex-row gap-4 border p-5">
+    <div className={styles.Root}>
       <UserAvatar name={data.name} />
-      <section className="flex w-full flex-col gap-4 p-2">
+      <section className={styles.Section}>
         <ProfileInfo user={data} />
-        <div className="flex items-center justify-between">
+        <div className={styles.Actions}>
           <Button>Редактировать</Button>
-          <Stamp className="relative top-2 left-2 mt-2" />
+          <Stamp className={styles.Stamp} />
         </div>
       </section>
     </div>

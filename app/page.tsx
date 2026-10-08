@@ -1,15 +1,16 @@
 import { Button } from '@shared/ui';
 import Link from 'next/link';
+import styles from './page.module.css';
 
 const linkToLogin = <Link href="/login" />;
 const linkToRegister = <Link href="/register" />;
 
 export default function Home() {
   return (
-    <div className="flex h-full w-full items-center justify-center">
-      <main className="w-75 text-center">
-        <h1 className="mb-10 font-medium">Мафия</h1>
-        <div className="flex justify-center gap-2">
+    <div className={styles.Page}>
+      <main className={styles.Main}>
+        <h1 className={styles.Title}>Мафия</h1>
+        <div className={styles.Actions}>
           <Button render={linkToLogin} nativeButton={false}>
             Вход
           </Button>

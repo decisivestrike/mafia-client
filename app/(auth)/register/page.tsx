@@ -1,14 +1,15 @@
 import { RegisterForm } from '@features/auth';
 import Link from 'next/link';
+import styles from './page.module.css';
 
 export default function RegisterPage() {
   return (
-    <main className="flex flex-col gap-5">
-      <h1 className="text-center text-3xl font-medium">Регистрация</h1>
+    <main className={styles.Main}>
+      <h1 className={styles.Title}>Регистрация</h1>
       <RegisterForm />
-      <div className="self-center text-sm">
+      <div className={styles.Hint}>
         Уже есть аккаунт?{' '}
-        <Link href="/login" className="font-bold">
+        <Link href="/login" className={styles.Link}>
           Войти
         </Link>
       </div>

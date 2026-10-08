@@ -8,6 +8,7 @@ import { useCallback } from 'react';
 import { login } from '../api/login';
 import { placeholder } from '../model/placeholders';
 import { loginSchema } from '../model/schemas/login-schema';
+import styles from './login-form.module.css';
 
 export default function LoginForm() {
   const router = useRouter();
@@ -38,11 +39,7 @@ export default function LoginForm() {
   );
 
   return (
-    <Form
-      errors={formErrors}
-      onFormSubmit={onSubmit}
-      className="w-75 gap-4 flex flex-col"
-    >
+    <Form errors={formErrors} onFormSubmit={onSubmit} className={styles.Form}>
       <Field.Root name="name">
         <Field.Label>Имя</Field.Label>
         <Field.Control placeholder={placeholder.name} type="text" />

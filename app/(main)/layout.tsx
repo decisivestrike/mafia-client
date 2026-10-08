@@ -1,11 +1,12 @@
 import Header from '@widgets/Header';
+import styles from './layout.module.css';
 import { QueryClientProvider } from '@/0-app/providers/QueryClientProvider';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-auto flex h-full w-full max-w-7xl flex-col justify-start gap-5">
-      <Header className="border-dashed not-sm:order-1 not-sm:border-t sm:border-b" />
-      <main className="mb-3 flex h-full items-center justify-center p-3">
+    <div className={styles.Layout}>
+      <Header className={styles.Header} />
+      <main className={styles.Main}>
         <QueryClientProvider>{children}</QueryClientProvider>
       </main>
     </div>

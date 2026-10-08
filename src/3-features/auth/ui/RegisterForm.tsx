@@ -11,6 +11,7 @@ import {
 import { register } from '../api/register';
 import { placeholder } from '../model/placeholders';
 import { registerSchema } from '../model/schemas/register-schema';
+import styles from './register-form.module.css';
 
 export default function RegisterForm() {
   const [formErrors, setFormErrors] = useState<ErrorMessages<typeof registerSchema>>(
@@ -44,11 +45,7 @@ export default function RegisterForm() {
   );
 
   return (
-    <Form
-      errors={formErrors}
-      onFormSubmit={onSubmit}
-      className="w-75 gap-4 flex flex-col"
-    >
+    <Form errors={formErrors} onFormSubmit={onSubmit} className={styles.Form}>
       <Field.Root name="email">
         <Field.Label>Почта</Field.Label>
         <Field.Control placeholder={placeholder.email} />

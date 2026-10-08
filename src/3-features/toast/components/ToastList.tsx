@@ -1,7 +1,6 @@
 'use client';
 
 import { Toast } from '@base-ui/react';
-import { cn } from 'cn';
 import styles from './toast.module.css';
 
 export function ToastList() {
@@ -20,13 +19,13 @@ export function ToastItem({ toast }: { toast: Toast.Root.ToastObject }) {
   const className = [styles.Toast, pulseClassName].filter(Boolean).join(' ');
 
   return (
-    <Toast.Root key={toast.id} toast={toast} className={cn(className)}>
-      <Toast.Content className="">
-        <div className="">
-          <Toast.Title className="" />
-          <Toast.Description className="" />
+    <Toast.Root key={toast.id} toast={toast} className={className}>
+      <Toast.Content>
+        <div>
+          <Toast.Title />
+          <Toast.Description />
         </div>
-        <Toast.Close className="">Закрыть</Toast.Close>
+        <Toast.Close>Закрыть</Toast.Close>
       </Toast.Content>
     </Toast.Root>
   );

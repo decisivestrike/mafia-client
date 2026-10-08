@@ -1,6 +1,9 @@
 'use client';
 
 import { type User } from '@entities/user';
+import { font } from '@shared/config/fonts';
+import { cn } from 'cn';
+import styles from './profile-info.module.css';
 
 interface Props {
   user: User;
@@ -8,16 +11,16 @@ interface Props {
 
 export default function ProfileInfo({ user: { name, id, email } }: Props) {
   return (
-    <div className="flex flex-col gap-1">
-      <div className="mb-2">
-        <div className="font-mono text-[10px]">Оперативный псевдоним</div>
+    <div className={styles.Info}>
+      <div className={styles.NameBlock}>
+        <div className={cn(styles.Label, font.mono)}>Оперативный псевдоним</div>
         <h3>{name}</h3>
       </div>
-      <div className="text-sm">
-        Идентификатор: <span className="font-mono text-xs">{id}</span>
+      <div className={styles.Row}>
+        Идентификатор: <span className={cn(styles.Value, font.mono)}>{id}</span>
       </div>
-      <div className="text-sm">
-        Почта: <span className="font-mono text-xs">{email}</span>
+      <div className={styles.Row}>
+        Почта: <span className={cn(styles.Value, font.mono)}>{email}</span>
       </div>
     </div>
   );

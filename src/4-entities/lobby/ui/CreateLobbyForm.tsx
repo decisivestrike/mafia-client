@@ -12,6 +12,7 @@ import {
   maxPlayers,
   minPlayers,
 } from '../model/create-lobby-schema';
+import styles from './create-lobby-form.module.css';
 
 export function CreateLobbyForm() {
   const { formErrors, validateForm } = useFormErrors(createLobbySchema);
@@ -50,11 +51,7 @@ export function CreateLobbyForm() {
   );
 
   return (
-    <Form
-      errors={formErrors}
-      onFormSubmit={onSubmit}
-      className="flex w-75 flex-col gap-4"
-    >
+    <Form errors={formErrors} onFormSubmit={onSubmit} className={styles.Form}>
       <Field.Root name="maxPlayers">
         <Field.Label>Максимум игроков</Field.Label>
         <Field.Control

@@ -1,8 +1,35 @@
-* {
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
   margin: 0;
   padding: 0;
   border-radius: 0;
+  box-sizing: border-box;
+  border: 0 solid;
+  text-decoration: none;
+}
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
 }

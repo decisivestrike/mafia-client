@@ -1,0 +1,8 @@
+@layer components {
+  .Form {
+    display: flex;
+    width: 18.75rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

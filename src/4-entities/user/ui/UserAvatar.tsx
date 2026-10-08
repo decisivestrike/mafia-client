@@ -2,6 +2,7 @@
 
 import { Avatar } from '@shared/ui/Avatar/Avatar';
 import { useMemo } from 'react';
+import styles from './user-avatar.module.css';
 
 interface Props {
   name: string;
@@ -25,8 +26,8 @@ export function UserAvatar({ name }: Props) {
   const fallbackText = useMemo(() => generateFallbackText(name), [name]);
 
   return (
-    <Avatar.Root className="min-h-32 min-w-32">
-      <Avatar.Image width="128" height="128" className="min-h-32 min-w-32" />
+    <Avatar.Root className={styles.Avatar}>
+      <Avatar.Image width="128" height="128" className={styles.Avatar} />
       <Avatar.Fallback>{fallbackText}</Avatar.Fallback>
     </Avatar.Root>
   );

@@ -1,0 +1,26 @@
+@layer components {
+  .Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .Logo {
+    display: none;
+    font-weight: 500;
+
+    @media (width >= 640px) {
+      display: block;
+    }
+  }
+
+  .Nav {
+    display: block;
+  }
+
+  .List {
+    display: flex;
+    gap: 1rem;
+  }
+}

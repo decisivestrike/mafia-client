@@ -1,7 +1,10 @@
 'use client';
 
+import { font } from '@shared/config/fonts';
 import { Button } from '@shared/ui';
 import { Separator } from '@shared/ui/Separator/Separator';
+import { cn } from 'cn';
+import styles from './lobby-card.module.css';
 
 import type { Lobby } from '../model/lobby';
 
@@ -19,12 +22,9 @@ function getAdminName(lobby: Lobby): string {
 
 function CardLine({ name, value }: { name: string; value: string }) {
   return (
-    <div className="font-mono text-sm flex items-center justify-between">
-      <span className="gap-2 tracking-wider flex items-center">
-        {/* <Clock className="h-4 w-4" strokeWidth={1.5} /> */}
-        {name}
-      </span>
-      <span className="tracking-wider">{value}</span>
+    <div className={cn(styles.Line, font.mono)}>
+      <span className={styles.Name}>{name}</span>
+      <span className={styles.Value}>{value}</span>
     </div>
   );
 }
@@ -33,15 +33,15 @@ export function LobbyCard({ lobby }: Props) {
   const adminName = getAdminName(lobby);
 
   return (
-    <div className="min-w-72 gap-1 p-3 flex flex-col border">
+    <div className={styles.Root}>
       <h5>Названия</h5>
-      <Separator orientation="horizontal" className="mb-1 h-px" />
+      <Separator orientation="horizontal" className={styles.Separator} />
       <CardLine name="Глава" value={adminName} />
       <CardLine
         name="Игроки"
         value={`${lobby.participants.length} / ${lobby.maxPlayers}`}
       />
-      <Button className="mt-2">Войти</Button>
+      <Button className={styles.Button}>Войти</Button>
     </div>
   );
 }

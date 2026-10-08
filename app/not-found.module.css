@@ -1,0 +1,28 @@
+@layer components {
+  .Root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .Main {
+    display: flex;
+    max-width: 45rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .Title {
+    margin-bottom: 0.25rem;
+  }
+
+  .Mono {
+    font-weight: 500;
+  }
+
+  .Button {
+    align-self: center;
+  }
+}

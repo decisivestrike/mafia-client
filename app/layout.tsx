@@ -1,5 +1,6 @@
 import '@app/globals.css';
 import { RootProviders } from '@app/providers';
+import { font } from '@shared/config/fonts';
 
 import type { Metadata } from 'next';
 
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="ru" suppressHydrationWarning>
+    <html lang="ru" className={font.body} suppressHydrationWarning>
       <head />
       <body>
         <RootProviders>{children}</RootProviders>

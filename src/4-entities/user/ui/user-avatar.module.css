@@ -1,0 +1,6 @@
+@layer components {
+  .Avatar {
+    min-width: 8rem;
+    min-height: 8rem;
+  }
+}

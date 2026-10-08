@@ -1,9 +1,10 @@
 import { CreateLobbyButton } from '@entities/lobby/ui/CreateLobbyButton';
 import { LobbyList } from '@entities/lobby/ui/LobbyList';
+import styles from './page.module.css';
 
 export default function LobbiesPage() {
   return (
-    <div className="flex flex-col items-center gap-5">
+    <div className={styles.Page}>
       <LobbyList />
       <CreateLobbyButton />
     </div>

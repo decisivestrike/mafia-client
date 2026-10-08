@@ -1,8 +1,11 @@
 'use client';
 
+import { font } from '@shared/config/fonts';
 import { Spinner } from '@shared/ui';
 import { useQuery } from '@tanstack/react-query';
+import { cn } from 'cn';
 import { getLobbiesOptions } from '../api/get-lobbies';
+import styles from './lobby-list.module.css';
 import { LobbyCard } from './LobbyCard';
 
 export function LobbyList() {
@@ -17,11 +20,11 @@ export function LobbyList() {
   }
 
   if (data.length === 0) {
-    return <div className="font-body font-medium">Нет доступных лобби</div>;
+    return <div className={cn(styles.Empty, font.body)}>Нет доступных лобби</div>;
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className={styles.Grid}>
       {data.map(lobby => (
         <LobbyCard key={lobby.id} lobby={lobby} />
       ))}
