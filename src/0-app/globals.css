@@ -1,0 +1,13 @@
+@layer reset, base, components, layout;
+@import './styles/reset.css' layer(reset);
+@import './styles/base.css' layer(base);
+
+:root {
+  --bg: white;
+  --fg: black;
+}
+
+:root:where([data-theme='dark']) {
+  --bg: #111;
+  --fg: #eee;
+}
