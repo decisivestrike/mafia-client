@@ -1,6 +1,6 @@
 @layer components {
   .Option {
-    padding: 0.5rem 0.25rem;
+    padding: 0.4rem 0.6rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
   }

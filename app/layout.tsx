@@ -32,7 +32,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="ru" className={font.body} suppressHydrationWarning>
+    <html
+      lang="ru"
+      className={`${font.heading.variable} ${font.body.variable} ${font.mono.variable}`}
+      suppressHydrationWarning
+    >
       <head />
       <body>
         <RootProviders>{children}</RootProviders>

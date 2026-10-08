@@ -5,6 +5,9 @@ import styles from './button.module.css';
 
 export default function Button({ className, ...props }: ButtonBase.Props) {
   return (
-    <ButtonBase className={cn(styles.Button, font.body, className)} {...props} />
+    <ButtonBase
+      className={cn(styles.Button, font.body.className, className)}
+      {...props}
+    />
   );
 }

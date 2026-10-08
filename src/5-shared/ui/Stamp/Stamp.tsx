@@ -11,7 +11,7 @@ export function Stamp({ className, text = 'Конфиденциально' }: Pr
   return (
     <div className={className}>
       <div className={styles.Stamp}>
-        <p className={cn(styles.Text, font.mono)}>{text}</p>
+        <p className={cn(styles.Text, font.mono.className)}>{text}</p>
       </div>
     </div>
   );

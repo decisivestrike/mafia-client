@@ -19,7 +19,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const font = {
-  heading: oswald.className,
-  body: inter.className,
-  mono: jetBrainsMono.className,
+  heading: oswald,
+  body: inter,
+  mono: jetBrainsMono,
 };
