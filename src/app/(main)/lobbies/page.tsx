@@ -1,5 +1,5 @@
-import { CreateLobbyButton } from '@/entities/lobby/components/CreateLobbyButton';
-import { LobbyList } from '@/entities/lobby/components/LobbyList';
+import { CreateLobbyButton } from '@/entities/lobby/ui/CreateLobbyButton';
+import { LobbyList } from '@/entities/lobby/ui/LobbyList';
 
 export default function LobbiesPage() {
   return (
