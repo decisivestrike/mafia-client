@@ -1,11 +1,12 @@
 'use client';
 
-import { useLobbies } from '../hooks/useLobbies';
+import { useQuery } from '@tanstack/react-query';
+import { getLobbiesOptions } from '../api/get-lobbies';
 import { LobbyCard } from './LobbyCard';
 import { Spinner } from '@/shared/components';
 
 export function LobbyList() {
-  const { data, error, isPending, isError } = useLobbies();
+  const { data, error, isPending, isError } = useQuery(getLobbiesOptions);
 
   if (isPending) {
     return <Spinner />;

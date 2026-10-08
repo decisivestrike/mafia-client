@@ -8,7 +8,6 @@ export const maxPlayers = 12;
 export const createLobbySchema = z.object({
   maxPlayers: z.coerce
     .number()
-    .min(1, 'Укажите количество игроков')
     .min(minPlayers, `Минимум ${minPlayers} игроков`)
     .max(maxPlayers, `Максимум ${maxPlayers} игроков`),
 });

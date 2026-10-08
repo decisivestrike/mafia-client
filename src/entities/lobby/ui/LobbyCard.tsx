@@ -3,7 +3,7 @@
 import { Button } from '@/shared/components';
 import { Separator } from '@/shared/components/Separator';
 
-import type { Lobby } from '../models/lobby';
+import type { Lobby } from '../model/lobby';
 
 interface Props {
   lobby: Lobby;
