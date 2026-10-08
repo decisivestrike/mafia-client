@@ -1,4 +1,3 @@
-import { Form } from '@base-ui/react';
 import { z } from 'zod';
 
 export type ErrorMessages<T extends z.ZodType> = {
@@ -9,6 +8,10 @@ export type ValidationResult<T extends z.ZodType> =
   | { ok: true; data: z.core.output<T> }
   | { ok: false; errors: ErrorMessages<T> };
 
+export type FormValues = {
+  [key: string]: any;
+};
+
 /**
  * Проверяет форму по схеме
  * @param schema схема
@@ -17,7 +20,7 @@ export type ValidationResult<T extends z.ZodType> =
  */
 export function validateForm<T extends z.ZodType>(
   schema: T,
-  formValues: Form.Values,
+  formValues: FormValues,
 ): ValidationResult<T> {
   const result = schema.safeParse(formValues);
 
