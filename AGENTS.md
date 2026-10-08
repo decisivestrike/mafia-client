@@ -13,11 +13,11 @@
 - `cn`
 - Zod
 - next-themes
-- Jotai v3
+- Zustand
 
 **Инструменты:**
 
-- TypeScript 7
+- TypeScript 6
 - oxlint / oxfmt
 - PostCSS
 
@@ -28,14 +28,14 @@
 
 ## Архитектура
 
-Feature-Sliced Design (адаптированный):
+Feature-Sliced Design (FSD). Слои сверху вниз:
 
-- **`app/`** — страницы Next.js App Router. Группировка через `(группа)`. Файлы: `page.tsx`, `layout.tsx`, `error.tsx`, `not-found.tsx`.
-- **`entities/`** — доменные сущности (`user/`). Внутри: `models/`, `api/`, `components/`.
-- **`features/`** — фичи (`auth/`, `theme/`). Внутри: `api/`, `components/`, `schemas/`, `common/`. Публичный API через `index.ts`.
-- **`shared/`** — общая инфраструктура: `api/` (клиент, auth), `components/` (переиспользуемые UI), `hooks/`, `utils.ts`.
-- **`widgets/`** — страничные компоненты (Header).
-- **`_app/`** — инициализация приложения (CSS, шрифты, провайдеры, store).
+- **`_app/`** — слой `app` (инициализация приложения). CSS, шрифты, провайдеры, store, глобальные настройки.
+- **`app/`** — слой `pages` (Next.js App Router). Страницы, сгруппированные через `(группа)`. Файлы: `page.tsx`, `layout.tsx`, `error.tsx`, `not-found.tsx`.
+- **`widgets/`** — композиции сущностей и фич в осмысленные блоки (например, Header).
+- **`features/`** — пользовательские сценарии (`auth/`, `theme/`). Внутри: `api/`, `components/`, `schemas/`, `common/`. Публичный API через `index.ts`.
+- **`entities/`** — бизнес-сущности (`user/`). Внутри: `models/`, `api/`, `components/`.
+- **`shared/`** — переиспользуемая инфраструктура: `api/` (клиент, auth), `components/` (UI-кит), `hooks/`, `utils.ts`.
 
 ## Паттерны кода
 
