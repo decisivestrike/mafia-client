@@ -1,7 +1,7 @@
 'use client';
 
-import { Toggle, ToggleGroup } from '@shared/components';
-import { useIsHydrated } from '@shared/hooks';
+import { useIsHydrated } from '@shared/lib';
+import { Toggle, ToggleGroup } from '@shared/ui';
 import { useTheme } from 'next-themes';
 import { useCallback, useMemo } from 'react';
 

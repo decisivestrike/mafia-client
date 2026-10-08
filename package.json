@@ -25,7 +25,6 @@
     "zustand": "^5.0.15"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@tanstack/eslint-plugin-query": "^5.104.0",
     "@types/node": "^24.19.0",
     "@types/react": "^19.3.0",
@@ -33,7 +32,6 @@
     "oxfmt": "^0.70.0",
     "oxlint": "^1.85.0",
     "oxlint-tsgolint": "^7.0.2002",
-    "tailwindcss": "^4",
     "typescript": "^6.0.3"
   }
 }

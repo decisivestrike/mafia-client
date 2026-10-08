@@ -1,0 +1,9 @@
+@layer components {
+  .separator {
+    background-color: oklch(87% 0 0deg);
+
+    &:where([data-theme='dark'] *) {
+      background-color: oklch(37.1% 0 0deg);
+    }
+  }
+}

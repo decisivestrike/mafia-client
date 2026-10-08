@@ -1,8 +1,8 @@
 'use client';
 
 import { Form, Toast } from '@base-ui/react';
-import { Button, Field } from '@shared/components';
 import { useFormErrors } from '@shared/lib/forms/useFormErrors';
+import { Button, Field } from '@shared/ui';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { login } from '../api/login';

@@ -1,0 +1,19 @@
+@layer components {
+  .Spinner {
+    animation: rotationBack 1s ease-in-out infinite reverse;
+    color: black;
+
+    &:where([data-theme='dark'] *) {
+      color: white;
+    }
+  }
+
+  @keyframes rotationBack {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+}

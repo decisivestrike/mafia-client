@@ -1,5 +1,5 @@
 import '@app/globals.css';
-import { RootProviders } from '@/0-app/providers';
+import { RootProviders } from '@app/providers';
 
 import type { Metadata } from 'next';
 

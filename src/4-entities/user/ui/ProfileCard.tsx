@@ -1,7 +1,7 @@
 'use client';
 
-import { Button, Spinner } from '@shared/components';
-import { Stamp } from '@shared/components/Stamp';
+import { Button, Spinner } from '@shared/ui';
+import { Stamp } from '@shared/ui/Stamp/Stamp';
 import { useQuery } from '@tanstack/react-query';
 import { profileInfoOptions } from '../api/get-profile-info';
 import ProfileInfo from './ProfileInfo';

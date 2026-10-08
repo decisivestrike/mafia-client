@@ -1,7 +1,7 @@
 'use client';
 
 import { logout } from '@features/auth';
-import { Button } from '@shared/components';
+import { Button } from '@shared/ui';
 import { cn } from 'cn';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

@@ -1,6 +1,6 @@
 'use client';
 
-import { Spinner } from '@shared/components';
+import { Spinner } from '@shared/ui';
 import { useQuery } from '@tanstack/react-query';
 import { getLobbiesOptions } from '../api/get-lobbies';
 import { LobbyCard } from './LobbyCard';

@@ -1,8 +1,8 @@
 'use client';
 
 import { Form, Toast } from '@base-ui/react';
-import { Button, Field } from '@shared/components';
 import { useFormErrors } from '@shared/lib/forms/useFormErrors';
+import { Button, Field } from '@shared/ui';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { lobbyCreationOptions } from '../api/create-lobby';

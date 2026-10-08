@@ -1,6 +1,7 @@
-@layer reset, base, components, layout;
 @import './styles/reset.css' layer(reset);
 @import './styles/base.css' layer(base);
+
+@layer reset, base, components, layout;
 
 :root {
   --bg: white;

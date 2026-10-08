@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar } from '@shared/components/Avatar/Avatar';
+import { Avatar } from '@shared/ui/Avatar/Avatar';
 import { useMemo } from 'react';
 
 interface Props {

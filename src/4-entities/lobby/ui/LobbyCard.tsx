@@ -1,7 +1,7 @@
 'use client';
 
-import { Button } from '@shared/components';
-import { Separator } from '@shared/components/Separator/Separator';
+import { Button } from '@shared/ui';
+import { Separator } from '@shared/ui/Separator/Separator';
 
 import type { Lobby } from '../model/lobby';
 

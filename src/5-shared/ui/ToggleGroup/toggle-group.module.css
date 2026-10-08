@@ -1,0 +1,12 @@
+@layer components {
+  .group {
+    display: flex;
+    gap: 1px;
+    padding: 1px;
+    border: 1px solid oklch(14.5% 0 0deg);
+
+    &:where([data-theme='dark'] *) {
+      border: 1px solid white;
+    }
+  }
+}

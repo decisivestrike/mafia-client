@@ -1,0 +1,32 @@
+@layer components {
+  /* Alternate animation names so repeated updates restart the same pulse. */
+  .PulseEven {
+    animation: pulse-even 0.28s ease;
+  }
+
+  .PulseOdd {
+    animation: pulse-odd 0.28s ease;
+  }
+
+  @keyframes pulse-even {
+    0%,
+    100% {
+      scale: 1;
+    }
+
+    50% {
+      scale: 1.04;
+    }
+  }
+
+  @keyframes pulse-odd {
+    0%,
+    100% {
+      scale: 1;
+    }
+
+    50% {
+      scale: 1.04;
+    }
+  }
+}

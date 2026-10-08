@@ -1,0 +1,73 @@
+@layer components {
+  .toggle {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    color: oklch(14.5% 0 0deg);
+    -webkit-user-select: none;
+    user-select: none;
+
+    &:where([data-theme='dark'] *) {
+      color: white;
+    }
+
+    @media (hover: hover) {
+      &:hover:not([data-disabled]) {
+        background-color: oklch(97% 0 0deg);
+
+        &:where([data-theme='dark'] *) {
+          background-color: oklch(26.9% 0 0deg);
+        }
+      }
+    }
+
+    &:active:not([data-disabled], [data-pressed]) {
+      background-color: oklch(92.2% 0 0deg);
+
+      &:where([data-theme='dark'] *) {
+        background-color: oklch(37.1% 0 0deg);
+      }
+    }
+
+    &[data-pressed] {
+      background-color: oklch(14.5% 0 0deg);
+      color: white;
+
+      &:where([data-theme='dark'] *) {
+        background-color: white;
+        color: oklch(14.5% 0 0deg);
+      }
+    }
+
+    @media (hover: hover) {
+      &[data-pressed]:hover:not([data-disabled]) {
+        background-color: oklch(14.5% 0 0deg);
+        color: white;
+
+        &:where([data-theme='dark'] *) {
+          background-color: white;
+          color: oklch(14.5% 0 0deg);
+        }
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid oklch(14.5% 0 0deg);
+      outline-offset: 1px;
+      position: relative;
+      z-index: 1;
+
+      &:where([data-theme='dark'] *) {
+        outline-color: white;
+      }
+    }
+  }
+}

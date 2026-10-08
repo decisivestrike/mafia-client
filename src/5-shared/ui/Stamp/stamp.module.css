@@ -1,0 +1,26 @@
+@layer components {
+  .Stamp {
+    display: inline-block;
+    transform: rotate(-5deg);
+    border: 2px solid oklch(50.5% 0.213 27.518deg);
+    padding: 0.5rem 1rem;
+    opacity: 0.6;
+
+    &:where([data-theme='dark'] *) {
+      border-color: oklch(70.4% 0.191 22.216deg);
+    }
+  }
+
+  .Text {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: oklch(50.5% 0.213 27.518deg);
+
+    &:where([data-theme='dark'] *) {
+      color: oklch(70.4% 0.191 22.216deg);
+    }
+  }
+}

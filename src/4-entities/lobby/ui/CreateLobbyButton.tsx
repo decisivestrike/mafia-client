@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@shared/components';
+import { Button } from '@shared/ui';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 
