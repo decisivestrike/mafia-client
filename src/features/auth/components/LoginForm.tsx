@@ -3,9 +3,12 @@
 import { Form, Toast } from '@base-ui/react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
+import {
+  type ErrorMessages,
+  validateForm,
+} from '../../../shared/lib/forms/validator';
 import { login } from '../api/login';
 import { placeholder } from '../common/placeholders';
-import { type ErrorMessages, validateForm } from '../common/validator';
 import { loginSchema } from '../schemas/login-schema';
 import { Button, Field } from '@/shared/components';
 

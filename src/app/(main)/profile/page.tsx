@@ -1,4 +1,4 @@
-import { ProfileCard } from '@/entities/user/components/ProfileCard';
+import { ProfileCard } from '@/entities/user/ui/ProfileCard';
 
 export default function ProfilePage() {
   return (
