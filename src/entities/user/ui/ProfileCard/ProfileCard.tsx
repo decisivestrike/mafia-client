@@ -1,18 +1,15 @@
-import ProfileInfo from '../ProfileInfo/ProfileInfo';
-import { UserAvatar } from '../UserAvatar';
 import styles from './profile-card.module.css';
-import { Button } from '@/shared/ui';
+import { ProfileAvatar } from './ProfileAvatar/ProfileAvatar';
+import { ProfileButtons } from './ProfileButtons/ProfileButtons';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 export function ProfileCard() {
   return (
     <div className={`${styles.Root} Card`}>
-      <UserAvatar />
+      <ProfileAvatar />
       <section className={styles.Section}>
         <ProfileInfo />
-        <div className={styles.Actions}>
-          <Button>Редактировать</Button>
-          <Button variant="secondary">Выйти</Button>
-        </div>
+        <ProfileButtons />
       </section>
     </div>
   );

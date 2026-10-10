@@ -1,0 +1,11 @@
+@layer components {
+  .Actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .LogoutIcon {
+    height: 1lh;
+  }
+}

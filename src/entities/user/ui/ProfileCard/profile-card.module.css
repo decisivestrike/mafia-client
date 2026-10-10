@@ -16,10 +16,4 @@
     width: 100%;
     gap: 1rem;
   }
-
-  .Actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
 }
