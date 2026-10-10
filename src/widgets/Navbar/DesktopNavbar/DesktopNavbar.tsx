@@ -2,7 +2,7 @@
 
 import { useRouter, usePathname } from 'next/navigation';
 import { isActiveItem, navItems } from '../shared';
-import styles from './navbar.module.css';
+import styles from './desktop-navbar.module.css';
 
 export function DesktopNavbar() {
   const router = useRouter();
@@ -27,10 +27,10 @@ export function DesktopNavbar() {
               >
                 <Icon className={styles.NavIcon} strokeWidth={1.5} />
                 <span>{item.label}</span>
-                {active && <div className={styles.ActiveIndicator} />}
               </button>
             );
           })}
+          <div className={styles.ActiveIndicator} />
         </nav>
       </div>
     </header>
