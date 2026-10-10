@@ -1,6 +1,6 @@
 import '@/setup/globals.css';
 import { RootProviders } from '@/setup/providers';
-import { font } from '@/shared/config/fonts';
+import { fonts } from '@/shared/config/fonts';
 
 import type { Metadata } from 'next';
 
@@ -32,11 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html
-      lang="ru"
-      className={`${font.heading.variable} ${font.body.variable} ${font.mono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="ru" className={fonts} suppressHydrationWarning>
       <head />
       <body>
         <RootProviders>{children}</RootProviders>

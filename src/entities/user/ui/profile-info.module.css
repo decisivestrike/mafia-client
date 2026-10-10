@@ -10,6 +10,7 @@
   }
 
   .Label {
+    font-family: var(--font-mono);
     font-size: 0.625rem;
   }
 
@@ -19,6 +20,7 @@
   }
 
   .Value {
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     line-height: 1rem;
   }

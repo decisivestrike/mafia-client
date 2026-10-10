@@ -18,8 +18,5 @@ const jetBrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-export const font = {
-  heading: oswald,
-  body: inter,
-  mono: jetBrainsMono,
-};
+/** Для регистрации в root layout */
+export const fonts = `${oswald.variable} ${inter.variable} ${jetBrainsMono.variable}`;

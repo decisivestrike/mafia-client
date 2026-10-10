@@ -2,13 +2,8 @@ html,
 body {
   height: 100%;
   overflow: hidden;
-  color: rgb(8, 8, 8);
-  background-color: rgb(247, 247, 247);
-
-  &:where([data-theme='dark'] *) {
-    color: rgb(247, 247, 247);
-    background-color: rgb(8, 8, 8);
-  }
+  color: var(--foreground);
+  background-color: var(--background-primary);
 }
 
 html {

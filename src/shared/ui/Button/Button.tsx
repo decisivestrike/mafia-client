@@ -1,12 +1,26 @@
 import { Button as ButtonBase } from '@base-ui/react/button';
-import { cn } from 'cn';
+import { cva, type VariantProps } from 'class-variance-authority';
 import styles from './button.module.css';
-import { font } from '@/shared/config/fonts';
+import { concat } from '@/shared/lib/utils';
 
-export default function Button({ className, ...props }: ButtonBase.Props) {
+const buttonVariant = cva(styles.Base, {
+  variants: {
+    variant: {
+      primary: styles.Primary,
+      secondary: styles.Secondary,
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+  },
+});
+
+export type ButtonProps = ButtonBase.Props & VariantProps<typeof buttonVariant>;
+
+export default function Button({ variant, className, ...props }: ButtonProps) {
   return (
     <ButtonBase
-      className={cn(styles.Button, font.body.className, className)}
+      className={concat(buttonVariant({ variant }), className as string)}
       {...props}
     />
   );

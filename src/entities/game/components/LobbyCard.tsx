@@ -1,8 +1,6 @@
 'use client';
 
-import { cn } from 'cn';
 import styles from './lobby-card.module.css';
-import { font } from '@/shared/config/fonts';
 import { Button } from '@/shared/ui';
 import { Separator } from '@/shared/ui/Separator/Separator';
 
@@ -22,7 +20,7 @@ function getAdminName(lobby: Lobby): string {
 
 function CardLine({ name, value }: { name: string; value: string }) {
   return (
-    <div className={cn(styles.Line, font.mono)}>
+    <div className={styles.Line}>
       <span className={styles.Name}>{name}</span>
       <span className={styles.Value}>{value}</span>
     </div>

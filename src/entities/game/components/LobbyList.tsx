@@ -1,11 +1,9 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { cn } from 'cn';
 import { getLobbiesOptions } from '../api/get-lobbies';
 import styles from './lobby-list.module.css';
 import { LobbyCard } from './LobbyCard';
-import { font } from '@/shared/config/fonts';
 import { Spinner } from '@/shared/ui';
 
 export function LobbyList() {
@@ -20,7 +18,7 @@ export function LobbyList() {
   }
 
   if (data.length === 0) {
-    return <div className={cn(styles.Empty, font.body)}>Нет доступных лобби</div>;
+    return <div className={styles.Empty}>Нет доступных лобби</div>;
   }
 
   return (

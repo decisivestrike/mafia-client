@@ -1,6 +1,4 @@
-import { cn } from 'cn';
 import styles from './stamp.module.css';
-import { font } from '@/shared/config/fonts';
 
 interface Props {
   className?: string;
@@ -11,7 +9,7 @@ export function Stamp({ className, text = 'Конфиденциально' }: Pr
   return (
     <div className={className}>
       <div className={styles.Stamp}>
-        <p className={cn(styles.Text, font.mono.className)}>{text}</p>
+        <p className={styles.Text}>{text}</p>
       </div>
     </div>
   );

@@ -1,65 +1,67 @@
 @layer components {
-  .Button {
+  .Base {
+    font-family: var(--font-mono);
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     height: 2rem;
-    padding: 0 0.75rem;
+    padding: 0 0.8rem;
     margin: 0;
-    border: 1px solid oklch(14.5% 0 0deg);
     border-radius: 0;
-    background-color: white;
-    font-family: inherit;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1;
     white-space: nowrap;
-    color: oklch(14.5% 0 0deg);
     -webkit-user-select: none;
     user-select: none;
-
-    &:where([data-theme='dark'] *) {
-      border: 1px solid white;
-      background-color: oklch(14.5% 0 0deg);
-      color: white;
-    }
-
-    @media (hover: hover) {
-      &:hover:not([data-disabled]) {
-        background-color: oklch(97% 0 0deg);
-
-        &:where([data-theme='dark'] *) {
-          background-color: oklch(26.9% 0 0deg);
-        }
-      }
-    }
+    letter-spacing: 0.025em;
 
     &:active:not([data-disabled]) {
       background-color: oklch(92.2% 0 0deg);
-
-      &:where([data-theme='dark'] *) {
-        background-color: oklch(37.1% 0 0deg);
-      }
     }
 
     &[data-disabled] {
-      color: oklch(55.6% 0 0deg);
-      border-color: oklch(55.6% 0 0deg);
-
-      &:where([data-theme='dark'] *) {
-        color: oklch(70.8% 0 0deg);
-        border-color: oklch(70.8% 0 0deg);
-      }
+      background-color: transparent;
+      color: var(--dim-foreground);
+      cursor: not-allowed;
+      border-color: var(--border-subtle);
     }
 
     &:focus-visible {
       outline: 2px solid oklch(14.5% 0 0deg);
       outline-offset: -1px;
+    }
+  }
 
-      &:where([data-theme='dark'] *) {
-        outline-color: white;
+  .Primary {
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--primary-foreground);
+    background-color: var(--primary);
+    transition: background-color 0.15s ease-in-out;
+
+    @media (hover: hover) {
+      &:hover:not([data-disabled]) {
+        background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+      }
+    }
+  }
+
+  .Secondary {
+    text-transform: uppercase;
+    background-color: transparent;
+    color: var(--muted-foreground);
+    border: 1px solid var(--border);
+    transition:
+      border-color 0.2s ease-in-out,
+      color 0.2s ease-in-out;
+
+    @media (hover: hover) {
+      &:hover:not([data-disabled]) {
+        color: var(--foreground);
+        border-color: color-mix(in srgb, var(--foreground) 30%, transparent);
       }
     }
   }

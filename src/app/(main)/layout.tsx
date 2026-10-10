@@ -1,11 +1,11 @@
 import styles from './layout.module.css';
 import { QueryClientProvider } from '@/setup/providers/QueryClientProvider';
-import Header from '@/widgets/Header';
+import { Navbar } from '@/widgets/Navbar/Navbar';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className={styles.Layout}>
-      <Header className={styles.Header} />
+      <Navbar />
       <main className={styles.Main}>
         <QueryClientProvider>{children}</QueryClientProvider>
       </main>

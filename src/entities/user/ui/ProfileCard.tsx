@@ -26,6 +26,7 @@ export function ProfileCard() {
         <ProfileInfo user={data} />
         <div className={styles.Actions}>
           <Button>Редактировать</Button>
+          <Button variant="secondary">Выйти</Button>
           <Stamp className={styles.Stamp} />
         </div>
       </section>
