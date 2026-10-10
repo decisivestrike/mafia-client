@@ -1,0 +1,25 @@
+@layer components {
+  .Root {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    gap: 1rem;
+
+    @media (width < 640px) {
+      flex-direction: column;
+    }
+  }
+
+  .Section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .Actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}

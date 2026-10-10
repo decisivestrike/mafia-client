@@ -1,3 +1,4 @@
+import { QueryClientProvider } from './QueryClientProvider';
 import { ThemeProvider } from '@/features/theme';
 import { ToastProvider } from '@/features/toast';
 
@@ -7,7 +8,9 @@ import type { ReactNode } from 'react';
 export function RootProviders({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider>
-      <ToastProvider>{children}</ToastProvider>
+      <ToastProvider>
+        <QueryClientProvider>{children}</QueryClientProvider>
+      </ToastProvider>
     </ThemeProvider>
   );
 }
