@@ -1,7 +1,9 @@
 @layer components {
-  .Spinner {
-    animation: rotationBack 1s ease-in-out infinite reverse;
+  .Base {
+    box-sizing: border-box;
     color: var(--foreground);
+    overflow: hidden;
+    animation: rotationBack 1s ease-in-out infinite reverse;
   }
 
   @keyframes rotationBack {
@@ -11,5 +13,13 @@
     100% {
       transform: rotate(-360deg);
     }
+  }
+
+  .Large {
+    min-height: 64px;
+    min-width: 64px;
+
+    max-height: 64px;
+    max-width: 64px;
   }
 }
