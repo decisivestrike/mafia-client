@@ -65,8 +65,8 @@
   }
 
   .NavIcon {
-    width: 0.875rem;
-    height: 0.875rem;
+    width: 1rem;
+    height: 1rem;
     flex-shrink: 0;
   }
 
@@ -141,10 +141,10 @@
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%);
     width: 2rem;
     height: 1px;
     background-color: #9b1b1b;
+    transform: translate(-50%, -1px);
   }
 
   .MobileIcon {
