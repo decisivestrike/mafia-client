@@ -1,0 +1,12 @@
+@import './styles/reset.css' layer(reset);
+@import './styles/base.css' layer(base);
+
+@layer reset, base, components, layout;
+
+:root {
+  --color-vignette: rgba(88, 88, 88, 0.5);
+}
+
+:root:where([data-theme='dark']) {
+  --color-vignette: rgba(0, 0, 0, 0.5);
+}

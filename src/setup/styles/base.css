@@ -1,0 +1,88 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  color: rgb(8, 8, 8);
+  background-color: rgb(247, 247, 247);
+
+  &:where([data-theme='dark'] *) {
+    color: rgb(247, 247, 247);
+    background-color: rgb(8, 8, 8);
+  }
+}
+
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+h5 {
+  font-size: 1.4rem;
+}
+
+h6 {
+  font-size: 1.2rem;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 1rem;
+}
+
+/* Vignette */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 30%,
+    var(--color-vignette) 100%
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
