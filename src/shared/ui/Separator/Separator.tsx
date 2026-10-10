@@ -4,12 +4,12 @@ import styles from './separator.module.css';
 export function Separator({ className, ...props }: SeparatorBase.Props) {
   const orientation = props.orientation ?? 'horizontal';
 
-  const orientaionClass =
+  const orientationClass =
     orientation === 'horizontal' ? styles.Horizontal : styles.Vertical;
 
   return (
     <SeparatorBase
-      className={`${styles.separator} ${orientaionClass} ${className as string}`}
+      className={`${styles.Separator} ${orientationClass} ${(className ?? '') as string}`}
       {...props}
     />
   );

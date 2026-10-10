@@ -1,0 +1,11 @@
+.Card {
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  transition: background-color 0.2s ease-in-out;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: color-mix(in srgb, var(--foreground) 20%, transparent);
+    }
+  }
+}

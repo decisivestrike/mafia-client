@@ -1,5 +1,5 @@
 @layer components {
-  .field {
+  .Field {
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -7,22 +7,20 @@
     width: 100%;
   }
 
-  .label {
+  .Label {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
     color: var(--foreground);
   }
 
-  .input {
+  .Input {
+    font-family: var(--font-mono);
     box-sizing: border-box;
     padding: 0 0.5rem;
-    margin: 0;
-    border-radius: 0;
     border: 1px solid var(--border);
     width: 100%;
     height: 2rem;
-    font-family: inherit;
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 400;
@@ -40,21 +38,14 @@
     }
 
     &:focus {
-      outline: 1px solid var(--primary);
+      outline: 1px solid color-mix(in srgb, var(--foreground) 30%, transparent);
       outline-offset: -1px;
     }
   }
 
-  .error {
+  .Error {
     font-size: 0.875rem;
     line-height: 1.25rem;
     color: oklch(50.5% 0.213 27.518deg);
-  }
-
-  .description {
-    margin: 0;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    color: oklch(43.9% 0 0deg);
   }
 }

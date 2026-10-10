@@ -1,13 +1,15 @@
 @layer components {
   .Separator {
-    background-color: var(--background-border);
+    background-color: var(--border);
   }
 
   .Vertical {
+    height: 100%;
     width: 1px;
   }
 
   .Horizontal {
     height: 1px;
+    width: 100%;
   }
 }

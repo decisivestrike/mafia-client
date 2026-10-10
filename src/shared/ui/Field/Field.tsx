@@ -4,21 +4,21 @@ import styles from './field.module.css';
 
 export namespace Field {
   export function Root({ className, ...props }: FieldBase.Root.Props) {
-    return <FieldBase.Root className={cn(styles.field, className)} {...props} />;
+    return <FieldBase.Root className={cn(styles.Field, className)} {...props} />;
   }
 
   export function Label({ className, ...props }: FieldBase.Label.Props) {
-    return <FieldBase.Label className={cn(styles.label, className)} {...props} />;
+    return <FieldBase.Label className={cn(styles.Label, className)} {...props} />;
   }
 
   export function Control({ className, ...props }: FieldBase.Control.Props) {
-    return <FieldBase.Control className={cn(styles.input, className)} {...props} />;
+    return <FieldBase.Control className={cn(styles.Input, className)} {...props} />;
   }
 
   export function Error({ className, ...props }: FieldBase.Error.Props) {
     return (
       <FieldBase.Error
-        className={`${styles.error} ${className as string}`}
+        className={`${styles.Error} ${className as string}`}
         {...props}
       />
     );
