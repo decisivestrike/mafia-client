@@ -1,6 +1,6 @@
 # Mafia
 
-Браузерный клиент для игры «Мафия». Next.js 16 + React 19, Tailwind CSS v4, TypeScript.
+Браузерный клиент для игры "Мафия". Next.js 16 + React 19, TypeScript.
 
 ## Технологии
 
@@ -9,8 +9,6 @@
 - Next.js 16 (App Router), React 19
 - @base-ui/react
 - TanStack React Query
-- Tailwind CSS v4
-- `cn`
 - Zod
 - next-themes
 - Zustand
@@ -19,7 +17,6 @@
 
 - TypeScript 6
 - oxlint / oxfmt
-- PostCSS
 
 **Инфраструктура:**
 
@@ -30,8 +27,8 @@
 
 Feature-Sliced Design (FSD). Слои сверху вниз:
 
-- **`_app/`** — слой `app` (инициализация приложения). CSS, шрифты, провайдеры, store, глобальные настройки.
 - **`app/`** — слой `pages` (Next.js App Router). Страницы, сгруппированные через `(группа)`. Файлы: `page.tsx`, `layout.tsx`, `error.tsx`, `not-found.tsx`.
+- **`setup/`** — слой `app` (инициализация приложения). CSS, шрифты, провайдеры, store, глобальные настройки.
 - **`widgets/`** — композиции сущностей и фич в осмысленные блоки (например, Header).
 - **`features/`** — пользовательские сценарии (`auth/`, `theme/`). Внутри: `api/`, `components/`, `schemas/`, `common/`. Публичный API через `index.ts`.
 - **`entities/`** — бизнес-сущности (`user/`). Внутри: `models/`, `api/`, `components/`.
