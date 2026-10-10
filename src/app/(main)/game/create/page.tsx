@@ -1,5 +1,5 @@
-import { CreateLobbyForm } from '@/entities/game/ui/CreateLobbyForm';
+import { GameCreationForm } from '@/entities/game/components/GameCreationForm';
 
 export default function CreateLobbyPage() {
-  return <CreateLobbyForm />;
+  return <GameCreationForm />;
 }

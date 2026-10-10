@@ -4,9 +4,55 @@
 @layer reset, base, components, layout;
 
 :root {
-  --color-vignette: rgba(88, 88, 88, 0.5);
+  --color-vignette: rgba(0, 0, 0, 0.1);
 }
 
 :root:where([data-theme='dark']) {
+  /* Noir color palette */
+  --background: #000000;
+  --background-secondary: #0d0d0d;
+  --background-tertiary: #141414;
+
+  --foreground: #b8b8b8;
+
+  --card: #0a0a0a;
+  --card-foreground: #b8b8b8;
+
+  --popover: #0a0a0a;
+  --popover-foreground: #b8b8b8;
+
+  --primary: #9b1b1b;
+  --primary-dark: #5a0000;
+  --primary-foreground: #f0f0f0;
+
+  --secondary: #141414;
+  --secondary-foreground: #b8b8b8;
+
+  --muted: #141414;
+  --muted-foreground: #555555;
+
+  --accent: #9b1b1b;
+  --accent-foreground: #f0f0f0;
+
+  --destructive: #9b1b1b;
+  --destructive-foreground: #f0f0f0;
+
+  --border: #222222;
+  --input: #141414;
+  --input-background: #0a0a0a;
+  --switch-background: #141414;
+
+  --ring: #9b1b1b;
+  --radius: 0rem;
+
+  --sidebar: #000000;
+  --sidebar-foreground: #b8b8b8;
+  --sidebar-primary: #9b1b1b;
+  --sidebar-primary-foreground: #f0f0f0;
+  --sidebar-accent: #0a0a0a;
+  --sidebar-accent-foreground: #b8b8b8;
+  --sidebar-border: #1a1a1a;
+  --sidebar-ring: #9b1b1b;
+
   --color-vignette: rgba(0, 0, 0, 0.5);
 }

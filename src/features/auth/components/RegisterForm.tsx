@@ -2,31 +2,25 @@
 
 import { Form, Toast } from '@base-ui/react';
 import { useRouter } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { register } from '../api/register';
 import { placeholder } from '../model/placeholders';
 import { registerSchema } from '../model/schemas/register-schema';
-import styles from './register-form.module.css';
-import { type ErrorMessages, validateForm } from '@/shared/lib/forms/validator';
+import styles from './form.module.css';
+import { useFormErrors } from '@/shared/lib/forms/useFormErrors';
 import { Button, Field } from '@/shared/ui';
 
 export default function RegisterForm() {
-  const [formErrors, setFormErrors] = useState<ErrorMessages<typeof registerSchema>>(
-    {},
-  );
+  const { formErrors, validateForm } = useFormErrors(registerSchema);
   const toastManager = Toast.useToastManager();
   const router = useRouter();
 
   const onSubmit = useCallback(
     async (formValues: Form.Values) => {
-      const result = validateForm(registerSchema, formValues);
+      const data = validateForm(formValues);
+      if (data === null) return;
 
-      if (!result.ok) {
-        setFormErrors(result.errors);
-        return;
-      }
-
-      const { email, name, password } = result.data;
+      const { email, name, password } = data;
       const error = await register(email, name, password);
 
       if (error === null) {
@@ -38,7 +32,7 @@ export default function RegisterForm() {
         });
       }
     },
-    [router, toastManager],
+    [router, toastManager, validateForm],
   );
 
   return (

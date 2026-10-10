@@ -18,10 +18,7 @@ export default function LoginForm() {
   const onSubmit = useCallback(
     async (formValues: Form.Values) => {
       const data = validateForm(formValues);
-
-      if (data === null) {
-        return;
-      }
+      if (data === null) return;
 
       const { name, password } = data;
       const error = await login(name, password);

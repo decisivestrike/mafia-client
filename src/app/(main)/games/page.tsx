@@ -1,6 +1,6 @@
 import styles from './page.module.css';
-import { CreateGameButton } from '@/entities/game/ui/CreateLobbyButton';
-import { LobbyList } from '@/entities/game/ui/LobbyList';
+import { CreateGameButton } from '@/entities/game/components/CreateLobbyButton';
+import { LobbyList } from '@/entities/game/components/LobbyList';
 
 export default function LobbiesPage() {
   return (

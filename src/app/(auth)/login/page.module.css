@@ -12,6 +12,15 @@
     font-weight: 500;
   }
 
+  .Container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: gainsboro;
+    border: 1px solid gray;
+    padding: 28px;
+  }
+
   .Hint {
     align-self: center;
     font-size: 0.875rem;
