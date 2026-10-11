@@ -1,0 +1,5 @@
+@layer components {
+  .Link {
+    font-weight: 700;
+  }
+}

@@ -1,13 +1,14 @@
 import { tokenService } from '@/shared/api/token-service';
 import { fetchApi } from '@/shared/api/utils';
 
+import type { RegisterSchema } from '../model/schemas/register-schema';
 import type { AccessTokenResponse, ApiError } from '@/shared/api';
 
-export async function register(
-  email: string,
-  name: string,
-  password: string,
-): Promise<ApiError | null> {
+export async function register({
+  email,
+  name,
+  password,
+}: RegisterSchema): Promise<ApiError | null> {
   const response = await fetchApi('/user/register', {
     method: 'POST',
     headers: {

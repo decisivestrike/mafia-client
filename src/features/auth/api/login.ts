@@ -1,12 +1,13 @@
 import { tokenService } from '@/shared/api/token-service';
 import { fetchApi } from '@/shared/api/utils';
 
+import type { LoginSchema } from '../model/schemas/login-schema';
 import type { AccessTokenResponse, ApiError } from '@/shared/api';
 
-export async function login(
-  name: string,
-  password: string,
-): Promise<ApiError | null> {
+export async function login({
+  name,
+  password,
+}: LoginSchema): Promise<ApiError | null> {
   const formData = new FormData();
   formData.append('username', name);
   formData.append('password', password);
@@ -28,3 +29,5 @@ export async function login(
 
   return body as ApiError;
 }
+
+// const [isPending, startTransition] = useTransition();

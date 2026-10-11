@@ -1,7 +1,7 @@
-import { tokenService } from '@/shared/api';
+import { tokenService, type ApiError } from '@/shared/api';
 import { fetchApi } from '@/shared/api/utils';
 
-export async function logout() {
+export async function logout(): Promise<ApiError | null> {
   const response = await fetchApi('/user/logout', {
     method: 'POST',
     credentials: 'include',
@@ -9,8 +9,8 @@ export async function logout() {
 
   if (response.ok) {
     tokenService.deleteAccessToken();
-    return true;
+    return null;
   }
 
-  return false;
+  return (await response.json()) as ApiError;
 }

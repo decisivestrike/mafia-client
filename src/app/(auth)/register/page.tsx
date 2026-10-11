@@ -1,5 +1,3 @@
-import { AuthPage } from '../_auth';
+import { RegisterPage } from '@/features/auth/pages/RegisterPage';
 
-export default function RegisterPage() {
-  return <AuthPage type="register" />;
-}
+export default RegisterPage;
