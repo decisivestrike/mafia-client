@@ -1,0 +1,11 @@
+@layer components {
+  .Heading {
+    color: var(--foreground);
+    font-size: 1.875rem;
+  }
+
+  .Separator {
+    margin-top: 0.75rem;
+    margin-bottom: 2rem;
+  }
+}

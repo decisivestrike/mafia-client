@@ -1,17 +1,12 @@
 import styles from './page.module.css';
-import { ProfileCard } from '@/entities/user/ui/ProfileCard/ProfileCard';
-import { Separator } from '@/shared/ui';
+import { ProfileCard } from '@/entities/user/components/ProfileCard/ProfileCard';
+import { Heading } from '@/shared/ui/Heading/Heading';
 
 export default function ProfilePage() {
   return (
-    <div className={styles.OuterWrapper}>
-      <div className={styles.InnerWrapper}>
-        <div>
-          <h1 className={styles.Heading}>Досье</h1>
-          <Separator className={styles.Separator} />
-        </div>
-        <ProfileCard />
-      </div>
+    <div className={styles.Wrapper}>
+      <Heading>Досье</Heading>
+      <ProfileCard />
     </div>
   );
 }

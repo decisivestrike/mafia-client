@@ -6,3 +6,16 @@
     gap: 1.25rem;
   }
 }
+
+@layer layout {
+  .Wrapper {
+    height: 100%;
+    width: 100%;
+    max-width: 72rem;
+    margin: 0px auto;
+
+    @media (width >= 1024px) {
+      margin-top: 1rem;
+    }
+  }
+}

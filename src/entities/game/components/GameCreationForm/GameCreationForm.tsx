@@ -3,14 +3,14 @@
 import { Form, Toast } from '@base-ui/react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
-import { gameCreationOptions } from '../api/create-lobby';
-import { getLobbiesOptions } from '../api/get-lobbies';
+import { gameCreationOptions } from '../../api/create-lobby';
+import { getLobbiesOptions } from '../../api/get-lobbies';
 import {
   createLobbySchema,
   maxPlayers,
   minPlayers,
-} from '../model/create-lobby-schema';
-import styles from './create-lobby-form.module.css';
+} from '../../model/create-lobby-schema';
+import styles from './game-creation-form.module.css';
 import { useFormErrors } from '@/shared/lib/forms/useFormErrors';
 import { Button, Field } from '@/shared/ui';
 

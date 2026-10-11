@@ -1,12 +1,16 @@
 import styles from './page.module.css';
-import { CreateGameButton } from '@/entities/game/components/CreateLobbyButton';
+import { GameCreationButton } from '@/entities/game/components/GameCreationButton/CreateLobbyButton';
 import { LobbyList } from '@/entities/game/components/LobbyList';
+import { Heading } from '@/shared/ui/Heading/Heading';
 
-export default function LobbiesPage() {
+export default function GamesPage() {
   return (
-    <div className={styles.Page}>
+    <div className={styles.Wrapper}>
+      <Heading>Операции</Heading>
+      <div>
+        <GameCreationButton />
+      </div>
       <LobbyList />
-      <CreateGameButton />
     </div>
   );
 }
