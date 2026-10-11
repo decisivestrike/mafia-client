@@ -11,3 +11,9 @@
     justify-content: center;
   }
 }
+
+@layer layout {
+  .Wrapper {
+    max-width: 48rem;
+  }
+}

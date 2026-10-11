@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import styles from './not-found.module.css';
 import { Button } from '@/shared/ui';
+import { CenterBox } from '@/shared/ui/CenterBox/CenterBox';
 
 const linkToMain = <Link href="/" />;
 
 export default function NotFound() {
   return (
-    <div className={styles.Root}>
+    <CenterBox>
       <main className={styles.Main}>
-        <h2 className={styles.Title}>Страница не найдена</h2>
+        <h1 className={styles.Title}>Страница не найдена</h1>
         <p>
           Похоже, вы свернули не на ту улицу. Этой страницы не существует в нашем
           городе — возможно, её <span className={styles.Mono}>убрали</span> прошлой
@@ -22,6 +23,6 @@ export default function NotFound() {
           Вернуться на главную
         </Button>
       </main>
-    </div>
+    </CenterBox>
   );
 }

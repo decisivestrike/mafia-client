@@ -1,12 +1,4 @@
 @layer components {
-  .Root {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-  }
-
   .Main {
     display: flex;
     max-width: 45rem;

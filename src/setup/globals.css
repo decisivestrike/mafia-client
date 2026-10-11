@@ -1,6 +1,5 @@
 @import './styles/reset.css' layer(reset);
 @import './styles/base.css' layer(base);
-@import './styles/components.css' layer(components);
 
 @layer reset, base, components, layout, overrides;
 

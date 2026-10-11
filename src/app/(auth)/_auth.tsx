@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styles from './auth.module.css';
 import { LoginForm, RegisterForm } from '@/features/auth';
 import { Separator } from '@/shared/ui';
+import { Card } from '@/shared/ui/Card/Card';
 
 interface Props {
   type: 'login' | 'register';
@@ -20,13 +21,13 @@ export function AuthPage({ type }: Props) {
           <div className={styles.Rule} />
         </div>
       </div>
-      <div className={`${styles.Container} Card`}>
+      <Card className={styles.Container}>
         {type === 'login' ? <LoginForm /> : <RegisterForm />}
         <Separator />
         <div className={styles.Hint}>
           <Hint type={type} />
         </div>
-      </div>
+      </Card>
     </main>
   );
 }
