@@ -29,5 +29,3 @@ export async function login({
 
   return body as ApiError;
 }
-
-// const [isPending, startTransition] = useTransition();
