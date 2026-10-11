@@ -38,7 +38,7 @@
     }
 
     &:focus {
-      outline: 1px solid color-mix(in srgb, var(--foreground) 30%, transparent);
+      outline: 2px solid color-mix(in srgb, var(--foreground) 30%, transparent);
       outline-offset: -1px;
     }
   }
