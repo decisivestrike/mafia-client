@@ -1,8 +1,8 @@
 @layer components {
   .Base {
-    box-sizing: border-box;
+    fill: currentColor;
     color: var(--foreground);
-    overflow: hidden;
+    box-sizing: border-box;
     animation: rotationBack 1s ease-in-out infinite reverse;
   }
 
