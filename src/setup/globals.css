@@ -54,7 +54,7 @@
   --sidebar-border: #cfc8bc;
   --sidebar-ring: #9b1b1b;
 
-  --color-vignette: rgba(0, 0, 0, 0.1);
+  --color-vignette: rgba(0, 0, 0, 0.3);
 }
 
 :root:where([data-theme='dark']) {
@@ -108,5 +108,5 @@
   --sidebar-border: #1e1c1a;
   --sidebar-ring: #9b1b1b;
 
-  --color-vignette: rgba(0, 0, 0, 0.5);
+  --color-vignette: rgba(0, 0, 0, 0.6);
 }

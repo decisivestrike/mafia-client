@@ -2,6 +2,7 @@
 
 import styles from './lobby-card.module.css';
 import { Button } from '@/shared/ui';
+import { Card } from '@/shared/ui/Card/Card';
 import { Separator } from '@/shared/ui/Separator/Separator';
 
 import type { Lobby } from '../model/lobby';
@@ -31,7 +32,7 @@ export function LobbyCard({ lobby }: Props) {
   const adminName = getAdminName(lobby);
 
   return (
-    <div className={styles.Root}>
+    <Card className={styles.Root}>
       <h5>Названия</h5>
       <Separator orientation="horizontal" className={styles.Separator} />
       <CardLine name="Глава" value={adminName} />
@@ -40,6 +41,6 @@ export function LobbyCard({ lobby }: Props) {
         value={`${lobby.participants.length} / ${lobby.maxPlayers}`}
       />
       <Button className={styles.Button}>Войти</Button>
-    </div>
+    </Card>
   );
 }
