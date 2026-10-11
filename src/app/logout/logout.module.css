@@ -1,0 +1,27 @@
+@layer components {
+  .Main {
+    display: flex;
+    max-width: 32rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .P {
+    margin: 5px 0px;
+  }
+
+  .Card {
+    padding: 1rem;
+  }
+
+  .Title {
+    margin-bottom: 0.25rem;
+  }
+
+  .Actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}

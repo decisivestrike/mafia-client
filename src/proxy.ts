@@ -3,19 +3,31 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 const protectedRoutes = ['/profile', '/settings', '/games', '/game'];
+const authRoutes = ['/login', '/register'];
 
 export function proxy(request: NextRequest) {
-  if (!isAuthenticated(request)) {
-    const { pathname } = request.nextUrl;
+  const { pathname } = request.nextUrl;
 
-    const isProtected = protectedRoutes.some(
+  if (isAuthenticated(request)) {
+    const isAuthRoute = authRoutes.some(
       route => pathname === route || pathname.startsWith(`${route}/`),
     );
 
-    if (isProtected) {
-      const loginUrl = new URL('/login', request.url);
-      return NextResponse.redirect(loginUrl);
+    if (isAuthRoute) {
+      const logoutUrl = new URL('/logout', request.url);
+      return NextResponse.redirect(logoutUrl);
     }
+
+    return NextResponse.next();
+  }
+
+  const isProtected = protectedRoutes.some(
+    route => pathname === route || pathname.startsWith(`${route}/`),
+  );
+
+  if (isProtected) {
+    const loginUrl = new URL('/login', request.url);
+    return NextResponse.redirect(loginUrl);
   }
 
   return NextResponse.next();
