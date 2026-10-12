@@ -22,6 +22,11 @@ export type Action =
     }
   | {
       type: 'idle';
+    }
+  | {
+      type: 'init';
+      roomId: string | null;
+      isLobby: boolean;
     };
 
 const userStatusReducer = (state: UserStatusState, action: Action) => {
@@ -32,6 +37,8 @@ const userStatusReducer = (state: UserStatusState, action: Action) => {
       return { roomId: action.roomId, isLobby: true };
     case 'idle':
       return { roomId: null, isLobby: false };
+    case 'init':
+      return { roomId: action.roomId, isLobby: action.isLobby };
     default:
       return state;
   }
