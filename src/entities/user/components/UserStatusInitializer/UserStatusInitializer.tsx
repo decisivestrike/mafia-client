@@ -2,11 +2,11 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { userRoomOptions } from '@/entities/user/api/get-user-room';
-import { useUserStatusStore } from '@/entities/user/model/status-store/useUserStatusStore';
+import { useGameIdStore } from '@/entities/user/model/status-store/useUserStatusStore';
 
 export function UserStatusInitializer() {
   const { data, isPending, isError } = useQuery(userRoomOptions);
-  const setGameId = useUserStatusStore(store => store.set);
+  const setGameId = useGameIdStore(store => store.set);
 
   if (isPending || isError) {
     return null;

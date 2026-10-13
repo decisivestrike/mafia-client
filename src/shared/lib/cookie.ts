@@ -1,6 +1,6 @@
 type SameSite = 'Strict' | 'Lax' | 'None';
 
-interface CookieOptions {
+export interface CookieOptions {
   path?: string;
   domain?: string;
   maxAge?: number; // в секундах

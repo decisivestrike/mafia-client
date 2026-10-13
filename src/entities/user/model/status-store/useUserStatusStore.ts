@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { useStore } from 'zustand';
-import { UserStatusStoreContext } from './user-status-context';
+import { GameIdStoreContext } from './user-status-context';
 
-import type { UserStatusStore } from './user-status-store';
+import type { GameIdStore } from './user-status-store';
 
-export function useUserStatusStore<T>(selector: (store: UserStatusStore) => T): T {
-  const userStatusStoreContext = useContext(UserStatusStoreContext);
+export function useGameIdStore<T>(selector: (store: GameIdStore) => T): T {
+  const userStatusStoreContext = useContext(GameIdStoreContext);
 
   if (!userStatusStoreContext) {
     throw new Error(

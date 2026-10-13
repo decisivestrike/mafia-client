@@ -1,41 +1,42 @@
 import { createStore } from 'zustand/vanilla';
-import { deleteCookie, setCookie } from '@/shared/lib/cookie';
+import { deleteCookie, setCookie, type CookieOptions } from '@/shared/lib/cookie';
 
-export type UserStatusState = {
+export type GameIdState = {
   gameId: string | null;
 };
 
-export type UserStatusActions = {
+export type GameIdActions = {
   set: (id: string) => void;
   remove: () => void;
 };
 
-export type UserStatusStore = UserStatusState & UserStatusActions;
+export type GameIdStore = GameIdState & GameIdActions;
 
-export type Action =
-  | {
-      type: 'playing';
-      roomId: string;
-    }
-  | {
-      type: 'idle';
-    };
+const cookieKeyName = 'gameId';
 
-export type UserStatusReducer = (
-  state: UserStatusState,
-  action: Action,
-) => Promise<UserStatusState>;
+const cookieOptions: CookieOptions = {
+  sameSite: 'Strict',
+};
 
-export function createUserStatusStore() {
-  return createStore<UserStatusStore>()(set => ({
+function setGameIdToCookie(id: string) {
+  setCookie(cookieKeyName, id, cookieOptions);
+}
+
+function removeGameIdFromCookie() {
+  deleteCookie(cookieKeyName, cookieOptions);
+}
+
+export function createGameIdStore() {
+  return createStore<GameIdStore>()(set => ({
     gameId: null,
 
     set: id => {
-      setCookie('gameId', id, { sameSite: 'Strict' });
+      setGameIdToCookie(id);
       return set({ gameId: id });
     },
     remove: () => {
-      deleteCookie('gameId', { sameSite: 'Strict' });
+      removeGameIdFromCookie();
+      return set({ gameId: null });
     },
   }));
 }

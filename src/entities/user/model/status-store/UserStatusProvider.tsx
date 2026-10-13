@@ -1,15 +1,15 @@
 'use client';
 
 import { type ReactNode, useState } from 'react';
-import { UserStatusStoreContext } from './user-status-context';
-import { createUserStatusStore } from './user-status-store';
+import { GameIdStoreContext } from './user-status-context';
+import { createGameIdStore } from './user-status-store';
 
-export interface UserStatusStoreProviderProps {
+export interface GameIdStoreProviderProps {
   children: ReactNode;
 }
 
-export function UserStatusStoreProvider({ children }: UserStatusStoreProviderProps) {
-  const [store] = useState(() => createUserStatusStore());
+export function GameIdStoreProvider({ children }: GameIdStoreProviderProps) {
+  const [store] = useState(() => createGameIdStore());
 
-  return <UserStatusStoreContext value={store}>{children}</UserStatusStoreContext>;
+  return <GameIdStoreContext value={store}>{children}</GameIdStoreContext>;
 }

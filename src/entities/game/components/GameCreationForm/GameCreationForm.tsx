@@ -11,7 +11,7 @@ import {
   minPlayers,
 } from '../../model/create-lobby-schema';
 import styles from './game-creation-form.module.css';
-import { useUserStatusStore } from '@/entities/user/model/status-store/useUserStatusStore';
+import { useGameIdStore } from '@/entities/user/model/status-store/useUserStatusStore';
 import { useFormErrors } from '@/shared/lib/forms/useFormErrors';
 import { Button, Field } from '@/shared/ui';
 
@@ -19,7 +19,7 @@ export function GameCreationForm() {
   const { formErrors, validateForm } = useFormErrors(createLobbySchema);
   const toastManager = Toast.useToastManager();
   const queryClient = useQueryClient();
-  const setGameId = useUserStatusStore(store => store.set);
+  const setGameId = useGameIdStore(store => store.set);
 
   const { mutate: createLobby } = useMutation({
     ...gameCreationOptions,

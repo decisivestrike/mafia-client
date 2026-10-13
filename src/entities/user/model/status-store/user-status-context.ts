@@ -2,10 +2,10 @@
 
 import { createContext } from 'react';
 
-import type { createUserStatusStore } from './user-status-store';
+import type { createGameIdStore } from './user-status-store';
 
-export type UserStatusStore = ReturnType<typeof createUserStatusStore>;
+export type GameIdStoreApi = ReturnType<typeof createGameIdStore>;
 
-export const UserStatusStoreContext = createContext<UserStatusStore | undefined>(
+export const GameIdStoreContext = createContext<GameIdStoreApi | undefined>(
   undefined,
 );
