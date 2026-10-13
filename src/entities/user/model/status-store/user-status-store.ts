@@ -1,54 +1,41 @@
 import { createStore } from 'zustand/vanilla';
+import { deleteCookie, setCookie } from '@/shared/lib/cookie';
 
 export type UserStatusState = {
-  roomId: string | null;
-  isLobby: boolean;
+  gameId: string | null;
 };
 
 export type UserStatusActions = {
-  dispatch: (action: Action) => void;
+  set: (id: string) => void;
+  remove: () => void;
 };
 
 export type UserStatusStore = UserStatusState & UserStatusActions;
 
 export type Action =
   | {
-      type: 'game';
-      roomId: string;
-    }
-  | {
-      type: 'lobby';
+      type: 'playing';
       roomId: string;
     }
   | {
       type: 'idle';
-    }
-  | {
-      type: 'init';
-      roomId: string | null;
-      isLobby: boolean;
     };
 
-const userStatusReducer = (state: UserStatusState, action: Action) => {
-  switch (action.type) {
-    case 'game':
-      return { roomId: action.roomId, isLobby: false };
-    case 'lobby':
-      return { roomId: action.roomId, isLobby: true };
-    case 'idle':
-      return { roomId: null, isLobby: false };
-    case 'init':
-      return { roomId: action.roomId, isLobby: action.isLobby };
-    default:
-      return state;
-  }
-};
+export type UserStatusReducer = (
+  state: UserStatusState,
+  action: Action,
+) => Promise<UserStatusState>;
 
 export function createUserStatusStore() {
-  return createStore<UserStatusStore>(set => ({
-    roomId: null,
-    isLobby: false,
+  return createStore<UserStatusStore>()(set => ({
+    gameId: null,
 
-    dispatch: (action: Action) => set(state => userStatusReducer(state, action)),
+    set: id => {
+      setCookie('gameId', id, { sameSite: 'Strict' });
+      return set({ gameId: id });
+    },
+    remove: () => {
+      deleteCookie('gameId', { sameSite: 'Strict' });
+    },
   }));
 }
