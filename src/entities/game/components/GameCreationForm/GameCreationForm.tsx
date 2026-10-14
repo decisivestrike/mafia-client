@@ -2,9 +2,10 @@
 
 import { Form, Toast } from '@base-ui/react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
-import { gameCreationOptions } from '../../api/create-lobby';
-import { getLobbiesOptions } from '../../api/get-lobbies';
+import { gameCreationOptions } from '../../api/create-game';
+import { getLobbiesOptions } from '../../api/get-all';
 import {
   createLobbySchema,
   maxPlayers,
@@ -20,6 +21,7 @@ export function GameCreationForm() {
   const toastManager = Toast.useToastManager();
   const queryClient = useQueryClient();
   const setGameId = useGameIdStore(store => store.set);
+  const router = useRouter();
 
   const { mutate: createLobby } = useMutation({
     ...gameCreationOptions,
@@ -30,10 +32,7 @@ export function GameCreationForm() {
 
       setGameId(game.id);
 
-      toastManager.add({
-        data: 'Успех',
-        description: 'Лобби создано',
-      });
+      router.replace(`/game/${game.id}`);
     },
     onError: error => {
       toastManager.add({

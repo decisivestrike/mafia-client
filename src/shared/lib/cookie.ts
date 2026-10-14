@@ -74,6 +74,7 @@ export function deleteCookie(
 ): void {
   setCookie(name, '', {
     ...options,
+    expires: new Date(0),
     maxAge: 0,
   });
 }

@@ -1,6 +1,6 @@
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import { BASE_URL } from '../env';
 
 /** Добавляет baseUrl */
 export function fetchApi(endpoint: string, init?: RequestInit) {
-  return fetch(new URL(endpoint, BASE_URL), init);
+  return fetch(new URL(endpoint, `http://${BASE_URL}`), init);
 }

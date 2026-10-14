@@ -15,6 +15,7 @@ export type GameIdStore = GameIdState & GameIdActions;
 const cookieKeyName = 'gameId';
 
 const cookieOptions: CookieOptions = {
+  path: '/',
   sameSite: 'Strict',
 };
 

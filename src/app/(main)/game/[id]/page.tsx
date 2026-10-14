@@ -1,3 +1,3 @@
-export default function LobbyPage() {
-  return <div>Лобби</div>;
-}
+import { GamePage } from '@/entities/game/pages/GamePage';
+
+export default GamePage;

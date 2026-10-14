@@ -1,4 +1,4 @@
-import { Oswald, Inter, JetBrains_Mono } from 'next/font/google';
+import { Oswald, IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google';
 
 const oswald = Oswald({
   variable: '--font-heading',
@@ -6,7 +6,7 @@ const oswald = Oswald({
   display: 'swap',
 });
 
-const inter = Inter({
+const plex_sans = IBM_Plex_Sans({
   variable: '--font-body',
   subsets: ['latin', 'cyrillic'],
   display: 'swap',
@@ -19,4 +19,4 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 /** Для регистрации в root layout */
-export const fonts = `${oswald.variable} ${inter.variable} ${jetBrainsMono.variable}`;
+export const fonts = `${oswald.variable} ${plex_sans.variable} ${jetBrainsMono.variable}`;

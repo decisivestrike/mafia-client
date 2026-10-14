@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 import type { NextRequest } from 'next/server';
 
-const protectedRoutes = ['/profile', '/settings', '/games', '/game'];
+const protectedRoutes = ['/profile', '/settings', '/games', '/game', '/logout'];
 
 function isProtectedRoute(pathname: string) {
   return protectedRoutes.some(
