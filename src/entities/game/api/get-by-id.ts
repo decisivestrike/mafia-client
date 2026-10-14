@@ -2,9 +2,9 @@ import { queryOptions } from '@tanstack/react-query';
 import { fetchAuthorized } from '@/shared/api';
 import { createRequest } from '@/shared/api/query';
 
-import type { Lobby } from '../model/lobby';
+import type { Game } from '../model/game';
 
-const getLobby = createRequest<Lobby>()((id: string) =>
+const getLobby = createRequest<Game>()((id: string) =>
   fetchAuthorized(`/lobbies/${id}`),
 );
 

@@ -5,13 +5,13 @@ import { Button } from '@/shared/ui';
 import { Card } from '@/shared/ui/Card/Card';
 import { Separator } from '@/shared/ui/Separator/Separator';
 
-import type { Lobby } from '../model/lobby';
+import type { Game } from '@/entities/game/model/game';
 
 interface Props {
-  lobby: Lobby;
+  lobby: Game;
 }
 
-function getAdminName(lobby: Lobby): string {
+function getAdminName(lobby: Game): string {
   const admin = lobby.participants.find(
     participant => participant.id === lobby.adminId,
   );

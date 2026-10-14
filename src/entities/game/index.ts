@@ -1,1 +1,1 @@
-export { type Lobby } from './model/lobby';
+export { type Game as Lobby } from './model/game';

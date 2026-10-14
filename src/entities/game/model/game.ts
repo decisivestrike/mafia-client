@@ -1,6 +1,6 @@
 import type { User } from '@/entities/user';
 
-export interface Lobby {
+export interface Game {
   id: string;
   adminId: string;
   maxPlayers: number;
