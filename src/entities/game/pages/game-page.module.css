@@ -1,5 +1,470 @@
 @layer layout {
   .Wrapper {
-    max-width: 72rem;
+    padding: 1rem;
+
+    @media (width >= 768px) {
+      padding: 1.5rem;
+    }
+  }
+
+  .Grid {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  .Header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+
+    @media (width >= 640px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .Label {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    letter-spacing: 0.2em;
+    color: var(--dim-foreground);
+    margin-bottom: 0.25rem;
+  }
+
+  .Title {
+    font-size: 1.5rem;
+    color: var(--foreground);
+  }
+
+  .StatusRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.375rem;
+  }
+
+  .StatusBadge {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    color: var(--muted-foreground);
+  }
+
+  .StatusDot {
+    color: var(--dim-foreground);
+    font-size: 0.5625rem;
+  }
+
+  .Timer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .TimerIcon {
+    width: 1rem;
+    height: 1rem;
+    color: var(--primary);
+    stroke-width: 1.5;
+    flex-shrink: 0;
+  }
+
+  .TimerValue {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .TimerBar {
+    height: 1px;
+    width: 7rem;
+    background-color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  .TimerBarFill {
+    height: 100%;
+    background-color: var(--primary);
+    transition: width 1s linear;
+  }
+
+  .MainArea {
+    display: grid;
+    gap: 1.25rem;
+
+    @media (width >= 1024px) {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  .PlayersPanel {
+    padding: 1.25rem;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+
+  .SectionTitle {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--muted-foreground);
+    margin-bottom: 1.25rem;
+  }
+
+  .CircleContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+
+  .CircleCenter {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .CenterDiamond {
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid var(--border);
+    transform: rotate(45deg);
+    opacity: 0.4;
+  }
+
+  .CenterGlow {
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--primary);
+    opacity: 0.04;
+    filter: blur(1.5rem);
+  }
+
+  .PlayerNode {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 4.5rem;
+  }
+
+  .PlayerButton {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover:not(:disabled) {
+      transform: scale(1.05);
+    }
+  }
+
+  .PlayerButtonSelected {
+    transform: scale(1.1);
+
+    &:hover:not(:disabled) {
+      transform: scale(1.1);
+    }
+  }
+
+  .PlayerCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 4.5rem;
+    padding: 0.5rem;
+    background-color: var(--raised);
+    border: 1px solid var(--border);
+    transition:
+      border-color 0.2s,
+      opacity 0.2s;
+  }
+
+  .PlayerCardAlive {
+    &:hover {
+      border-color: color-mix(in srgb, var(--foreground) 20%, transparent);
+    }
+  }
+
+  .PlayerCardSelected {
+    border-color: var(--primary);
+  }
+
+  .PlayerCardDead {
+    opacity: 0.25;
+    cursor: not-allowed;
+    border-color: var(--border-subtle);
+  }
+
+  .PlayerIcon {
+    font-size: 1.25rem;
+    margin-bottom: 0.125rem;
+    line-height: 1;
+    filter: grayscale(1);
+  }
+
+  .PlayerName {
+    font-family: var(--font-mono);
+    font-size: 0.4375rem;
+    text-align: center;
+    line-height: 1.2;
+    color: var(--muted-foreground);
+    transition: color 0.2s;
+  }
+
+  .PlayerNameSelected {
+    color: var(--foreground);
+  }
+
+  .VoteBadge {
+    position: absolute;
+    top: -0.375rem;
+    right: -0.375rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .VoteCount {
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+    color: var(--primary-foreground);
+  }
+
+  .DeadOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: color-mix(in srgb, var(--background-primary) 70%, transparent);
+    border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+    pointer-events: none;
+  }
+
+  .DeadIcon {
+    width: 1rem;
+    height: 1rem;
+    color: color-mix(in srgb, var(--primary) 50%, transparent);
+    stroke-width: 1.5;
+  }
+
+  .Actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .VoteButton {
+    flex: 1;
+    padding: 0.625rem 0;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s;
+
+    &:hover:not(:disabled) {
+      background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  .ResetButton {
+    padding: 0.625rem 1rem;
+    background-color: transparent;
+    color: var(--muted-foreground);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition:
+      border-color 0.2s,
+      color 0.2s;
+
+    &:hover {
+      color: var(--foreground);
+      border-color: color-mix(in srgb, var(--foreground) 30%, transparent);
+    }
+  }
+
+  .Legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .LegendItem {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .LegendIcon {
+    width: 0.75rem;
+    height: 0.75rem;
+    stroke-width: 1.5;
+  }
+
+  .LegendLabel {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    letter-spacing: 0.1em;
+  }
+
+  .ChatPanel {
+    display: flex;
+    flex-direction: column;
+    height: 32rem;
+    padding: 1.25rem;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+
+  .ChatHeader {
+    flex-shrink: 0;
+  }
+
+  .ChatMessages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-right: 0.25rem;
+  }
+
+  .SystemMessage {
+    border-left: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+    padding: 0.25rem 0.75rem;
+    background-color: color-mix(in srgb, var(--raised) 50%, transparent);
+  }
+
+  .MessageHeader {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.125rem;
+  }
+
+  .MessageTime {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    color: var(--dim-foreground);
+  }
+
+  .MessageTimeSystem {
+    color: var(--primary);
+  }
+
+  .MessageAuthor {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+  }
+
+  .MessageAuthorSystem {
+    color: var(--primary);
+  }
+
+  .MessageText {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--foreground);
+  }
+
+  .MessageTextSystem {
+    color: var(--primary);
+  }
+
+  .ChatInputArea {
+    flex-shrink: 0;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .ChatForm {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .ChatInput {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--raised);
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    font-size: 0.875rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      color: var(--dim-foreground);
+    }
+
+    &:focus {
+      border-color: color-mix(in srgb, var(--foreground) 30%, transparent);
+    }
+  }
+
+  .SendButton {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+    }
+  }
+
+  .SendIcon {
+    width: 0.875rem;
+    height: 0.875rem;
+    color: var(--primary-foreground);
+    stroke-width: 1.5;
+  }
+
+  .MafiaColor {
+    color: var(--primary);
   }
 }
