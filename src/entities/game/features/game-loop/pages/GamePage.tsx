@@ -16,7 +16,7 @@ import { Spinner } from '@/shared/ui';
 import { CenterBox } from '@/shared/ui/CenterBox/CenterBox';
 import { MainPageWrapper } from '@/shared/ui/MainPageWrapper/MainPageWrapper';
 
-import type { WebSocketMessage } from '../events';
+import type { Message } from '../events';
 import type { User as UserModel } from '@/entities/user';
 
 type Player = UserModel & {
@@ -114,10 +114,7 @@ export function GamePage() {
   useEffect(() => {
     if (lastJsonMessage !== null) {
       // oxlint-disable-next-line react/immutability
-      setChatMessages(messages => [
-        ...messages,
-        lastJsonMessage as WebSocketMessage,
-      ]);
+      setChatMessages(messages => [...messages, lastJsonMessage as Message]);
     }
   }, [lastJsonMessage]);
 
@@ -126,7 +123,7 @@ export function GamePage() {
 
   const players = useMemo(() => data?.participants ?? [], [data]);
 
-  const [events, setChatMessages] = useState<WebSocketMessage[]>([]);
+  const [events, setChatMessages] = useState<Message[]>([]);
 
   const playerPositions = useMemo(
     () =>
@@ -207,12 +204,13 @@ export function GamePage() {
             </div>
 
             <div className={styles.ChatMessages} ref={chatEndRef}>
-              {events.map((msg, id) => (
-                // oxlint-disable-next-line react/no-array-index-key
-                <div key={id} className={styles.SystemMessage}>
-                  {msg.payload?.text}
-                </div>
-              ))}
+              {events
+                .filter(message => message.topic === 'System')
+                .map(message => (
+                  <div key={message.timestamp} className={styles.SystemMessage}>
+                    {message.payload?.text ?? message.payload}
+                  </div>
+                ))}
             </div>
           </div>
         </div>
