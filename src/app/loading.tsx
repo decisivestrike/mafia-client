@@ -1,10 +1,10 @@
 import { Spinner } from '@/shared/ui';
-import { CenterBox } from '@/shared/ui/CenterBox/CenterBox';
+import { Center } from '@/shared/ui/Center/Center';
 
 export default function RootLoading() {
   return (
-    <CenterBox>
+    <Center>
       <Spinner />
-    </CenterBox>
+    </Center>
   );
 }

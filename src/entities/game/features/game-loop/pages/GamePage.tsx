@@ -13,7 +13,7 @@ import { HttpError } from '@/shared/api/query';
 import { BASE_URL } from '@/shared/env';
 import { cn } from '@/shared/lib/utils';
 import { Spinner } from '@/shared/ui';
-import { CenterBox } from '@/shared/ui/CenterBox/CenterBox';
+import { Center } from '@/shared/ui/Center/Center';
 import { MainPageWrapper } from '@/shared/ui/MainPageWrapper/MainPageWrapper';
 
 import type { Message } from '../events';
@@ -144,9 +144,9 @@ export function GamePage() {
 
   if (isPending) {
     return (
-      <CenterBox>
+      <Center>
         <Spinner />
-      </CenterBox>
+      </Center>
     );
   }
 
@@ -159,9 +159,9 @@ export function GamePage() {
       setTimeout(() => router.replace('/profile'), 0);
 
       return (
-        <CenterBox>
+        <Center>
           <Spinner />
-        </CenterBox>
+        </Center>
       );
     }
 

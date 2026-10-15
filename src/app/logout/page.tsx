@@ -7,7 +7,7 @@ import styles from './logout.module.css';
 import { logout } from '@/features/auth';
 import { Button } from '@/shared/ui';
 import { Card } from '@/shared/ui/Card/Card';
-import { CenterBox } from '@/shared/ui/CenterBox/CenterBox';
+import { Center } from '@/shared/ui/Center/Center';
 
 const linkToProfile = <Link href="/profile" />;
 
@@ -20,7 +20,7 @@ export default function LogoutPage() {
   }, [router]);
 
   return (
-    <CenterBox>
+    <Center>
       <main className={styles.Main}>
         <h1 className={styles.Title}>Выход из города</h1>
         <Card className={styles.Card}>
@@ -38,6 +38,6 @@ export default function LogoutPage() {
           </div>
         </Card>
       </main>
-    </CenterBox>
+    </Center>
   );
 }
