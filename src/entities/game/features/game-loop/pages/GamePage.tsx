@@ -208,7 +208,7 @@ export function GamePage() {
                 .filter(message => message.topic === 'System')
                 .map(message => (
                   <div key={message.timestamp} className={styles.SystemMessage}>
-                    {message.payload?.text ?? message.payload}
+                    {message.payload.text}
                   </div>
                 ))}
             </div>
