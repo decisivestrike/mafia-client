@@ -12,11 +12,12 @@ import { tokenService } from '@/shared/api';
 import { HttpError } from '@/shared/api/query';
 import { BASE_URL } from '@/shared/env';
 import { cn } from '@/shared/lib/utils';
-import { Spinner } from '@/shared/ui';
+import { Button, Spinner } from '@/shared/ui';
 import { Center } from '@/shared/ui/Center/Center';
 import { MainPageWrapper } from '@/shared/ui/MainPageWrapper/MainPageWrapper';
 
 import type { Message } from '../events';
+import type { LobbyCommandPayload } from '../events/payloads';
 import type { User as UserModel } from '@/entities/user';
 
 type Player = UserModel & {
@@ -82,9 +83,15 @@ export function GamePage() {
   const gameId = useGameIdStore(store => store.gameId);
   const removeGameId = useGameIdStore(store => store.remove);
 
-  const { lastJsonMessage } = useWebSocket(`ws://${BASE_URL}/rooms/${id}`, {
+  const [events, setEvents] = useState<Message[]>([]);
+
+  const { sendJsonMessage } = useWebSocket(`ws://${BASE_URL}/rooms/${id}`, {
     queryParams: {
       authorization: `Bearer ${tokenService.getAccessToken()}`,
+    },
+    onMessage(message) {
+      const event = JSON.parse(message.data) as Message;
+      setEvents(events => [...events, event]);
     },
     onClose(event) {
       if (event.code === 401) {
@@ -93,12 +100,6 @@ export function GamePage() {
     },
     share: true,
   });
-
-  useEffect(() => {
-    if (lastJsonMessage !== null) {
-      console.log(lastJsonMessage, typeof lastJsonMessage);
-    }
-  }, [lastJsonMessage]);
 
   const { data, isPending, isError, error } = useQuery({
     ...getLobbyOptions(id),
@@ -111,19 +112,10 @@ export function GamePage() {
     },
   });
 
-  useEffect(() => {
-    if (lastJsonMessage !== null) {
-      // oxlint-disable-next-line react/immutability
-      setChatMessages(messages => [...messages, lastJsonMessage as Message]);
-    }
-  }, [lastJsonMessage]);
-
   const [selectedPlayer, _setSelectedPlayer] = useState<number | null>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   const players = useMemo(() => data?.participants ?? [], [data]);
-
-  const [events, setChatMessages] = useState<Message[]>([]);
 
   const playerPositions = useMemo(
     () =>
@@ -204,17 +196,54 @@ export function GamePage() {
             </div>
 
             <div className={styles.ChatMessages} ref={chatEndRef}>
-              {events
-                .filter(message => message.topic === 'System')
-                .map(message => (
-                  <div key={message.timestamp} className={styles.SystemMessage}>
-                    {message.payload.text}
-                  </div>
-                ))}
+              {events.map(message => (
+                <div key={message.timestamp} className={styles.SystemMessage}>
+                  {messageToText(message)}
+                </div>
+              ))}
             </div>
           </div>
+
+          <Button
+            // oxlint-disable-next-line react-perf/jsx-no-new-function-as-prop
+            onClick={() => {
+              const payload = {
+                actionType: 'Leave',
+                roomId: id,
+              } as LobbyCommandPayload;
+
+              const message: Message = {
+                topic: 'Lobby',
+                messageType: 'Command',
+                timestamp: new Date().toISOString(),
+                payload,
+              };
+
+              sendJsonMessage(message);
+            }}
+          >
+            Выйти
+          </Button>
         </div>
       </div>
     </MainPageWrapper>
   );
+}
+
+function messageToText(message: Message): string | null {
+  const payload = message.payload;
+
+  if (payload && 'text' in payload) {
+    return payload.text;
+  }
+
+  if (message.messageType === 'GameStart') {
+    return 'Игра началась';
+  }
+
+  if (message.messageType === 'GameFinish') {
+    return 'Игра окончена';
+  }
+
+  return null;
 }
