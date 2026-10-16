@@ -1,4 +1,4 @@
-@layer layout {
+@layer components {
   .Center {
     display: flex;
     justify-content: center;

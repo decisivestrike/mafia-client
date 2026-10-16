@@ -8,7 +8,7 @@ import { Toggle, ToggleGroup } from '@/shared/ui';
 
 import type { Theme } from '..';
 
-export function ThemeToggleGroup() {
+export function ThemeToggleGroup({ className }: { className?: string }) {
   const isHydrated = useIsHydrated();
   const { theme, setTheme } = useTheme();
 
@@ -30,6 +30,7 @@ export function ThemeToggleGroup() {
 
   return (
     <ToggleGroup<Theme>
+      className={className}
       aria-label="Theme"
       value={themeValue}
       onValueChange={onThemeChange}

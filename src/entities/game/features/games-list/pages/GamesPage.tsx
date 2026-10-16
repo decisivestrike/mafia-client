@@ -1,3 +1,4 @@
+import { Input } from '@base-ui/react';
 import { LobbyList } from '../components/LobbyList';
 import styles from './games-page.module.css';
 import { GameCreationButton } from '@/entities/game/features/game-creation/components/GameCreationButton';
@@ -8,7 +9,8 @@ export function GamesPage() {
   return (
     <MainPageWrapper className={styles.Wrapper}>
       <Heading>Операции</Heading>
-      <div>
+      <div className={styles.Group}>
+        <Input className={styles.Search} placeholder="Поиск" />
         <GameCreationButton />
       </div>
       <LobbyList />

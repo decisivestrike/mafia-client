@@ -1,4 +1,8 @@
 @layer components {
+  .Hstretch {
+    flex: 1;
+  }
+
   .Empty {
     font-weight: 500;
   }

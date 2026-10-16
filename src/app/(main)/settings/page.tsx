@@ -1,16 +1,3 @@
-import styles from './page.module.css';
-import { ThemeToggleGroup } from '@/features/theme/components/ThemeToggleGroup';
-import { Heading } from '@/shared/ui/Heading/Heading';
-import { MainPageWrapper } from '@/shared/ui/MainPageWrapper/MainPageWrapper';
+import { SettingsPage } from '@/features/settings/pages/SettingsPage';
 
-export default function SettingsPage() {
-  return (
-    <MainPageWrapper className={styles.Wrapper}>
-      <Heading>Настройки</Heading>
-      <section className={styles.Grid}>
-        <div>Тема</div>
-        <ThemeToggleGroup />
-      </section>
-    </MainPageWrapper>
-  );
-}
+export default SettingsPage;

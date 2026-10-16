@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Skull, HatGlasses } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 import styles from './game-page.module.css';
 import { getLobbyOptions } from '@/entities/game/api/get-by-id';
@@ -85,7 +85,7 @@ export function GamePage() {
 
   const [events, setEvents] = useState<Message[]>([]);
 
-  const { sendJsonMessage } = useWebSocket(`ws://${BASE_URL}/rooms/${id}`, {
+  const { sendMessage } = useWebSocket(`ws://${BASE_URL}/rooms/${id}`, {
     queryParams: {
       authorization: `Bearer ${tokenService.getAccessToken()}`,
     },
@@ -133,6 +133,28 @@ export function GamePage() {
   useEffect(() => {
     chatEndRef.current?.scrollTo(0, chatEndRef.current.scrollHeight);
   }, [events]);
+
+  const onLeaveButtonClick = useCallback(() => {
+    const payload: LobbyCommandPayload = {
+      actionType: 'Leave',
+      roomId: id,
+      targetId: null,
+      roleSet: null,
+    };
+
+    const message: Message = {
+      topic: 'Lobby',
+      messageType: 'Command',
+      timestamp: new Date().toISOString(),
+      payload,
+    };
+
+    sendMessage(JSON.stringify(message));
+
+    removeGameId();
+
+    router.replace('/profile');
+  }, [router, sendMessage, id, removeGameId]);
 
   if (isPending) {
     return (
@@ -204,26 +226,7 @@ export function GamePage() {
             </div>
           </div>
 
-          <Button
-            // oxlint-disable-next-line react-perf/jsx-no-new-function-as-prop
-            onClick={() => {
-              const payload = {
-                actionType: 'Leave',
-                roomId: id,
-              } as LobbyCommandPayload;
-
-              const message: Message = {
-                topic: 'Lobby',
-                messageType: 'Command',
-                timestamp: new Date().toISOString(),
-                payload,
-              };
-
-              sendJsonMessage(message);
-            }}
-          >
-            Выйти
-          </Button>
+          <Button onClick={onLeaveButtonClick}>Выйти</Button>
         </div>
       </div>
     </MainPageWrapper>

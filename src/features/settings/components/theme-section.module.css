@@ -1,0 +1,12 @@
+@layer components {
+  .Root {
+    padding: 0.5rem 1rem;
+  }
+
+  .ToggleGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}

@@ -1,4 +1,8 @@
 @layer components {
+  .Wrapper {
+    max-width: 48rem;
+  }
+
   .Form {
     display: flex;
     width: 18.75rem;

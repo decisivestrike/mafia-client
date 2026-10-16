@@ -5,24 +5,37 @@ import styles from './lobby-list.module.css';
 import { LobbyCard } from './LobbyCard';
 import { getLobbiesOptions as getGamesOptions } from '@/entities/game/api/get-all';
 import { Spinner } from '@/shared/ui';
+import { Center } from '@/shared/ui/Center/Center';
 
 export function LobbyList() {
   const { data, error, isPending, isError } = useQuery(getGamesOptions);
 
   if (isPending) {
-    return <Spinner />;
+    return (
+      <Center className={`${styles.Empty} ${styles.Hstretch}`}>
+        <Spinner />
+      </Center>
+    );
   }
 
   if (isError) {
-    return <div>{error.message}</div>;
+    return (
+      <Center className={`${styles.Empty} ${styles.Hstretch}`}>
+        {error.message}
+      </Center>
+    );
   }
 
   if (data.length === 0) {
-    return <div className={styles.Empty}>Нет доступных лобби</div>;
+    return (
+      <Center className={`${styles.Empty} ${styles.Hstretch}`}>
+        Нет доступных лобби
+      </Center>
+    );
   }
 
   return (
-    <div className={styles.Grid}>
+    <div className={`${styles.Grid} ${styles.Hstretch}`}>
       {data.map(lobby => (
         <LobbyCard key={lobby.id} lobby={lobby} />
       ))}
