@@ -25,6 +25,18 @@ export class TokenService {
   }
 
   /**
+   * Обновляет токены если их нету и возвращает accessToken
+   * @throws при ошибке сети
+   */
+  loadTokens(): Promise<string> {
+    if (this.accessToken !== null) {
+      return Promise.resolve(this.accessToken);
+    }
+
+    return this.refreshTokens();
+  }
+
+  /**
    * Обновляет токены и возвращает accessToken
    * @throws при ошибке сети
    */

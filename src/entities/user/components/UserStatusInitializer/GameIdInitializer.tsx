@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { userRoomOptions } from '@/entities/user/api/get-user-room';
 import { useGameIdStore } from '@/entities/user/model/status-store/useUserStatusStore';
 
-export function UserStatusInitializer() {
+export function GameIdInitializer() {
   const { data, isPending, isError } = useQuery(userRoomOptions);
   const setGameId = useGameIdStore(store => store.set);
   const removeGameId = useGameIdStore(store => store.remove);

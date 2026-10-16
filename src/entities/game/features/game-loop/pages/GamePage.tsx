@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Skull, HatGlasses } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { use, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 import styles from './game-page.module.css';
 import { getLobbyOptions } from '@/entities/game/api/get-by-id';
@@ -77,7 +77,11 @@ function PlayerNode({ player, isSelected, positionStyle }: PlayerNodeProps) {
   );
 }
 
+const loadTokensPromise = tokenService.loadTokens();
+
 export function GamePage() {
+  use(loadTokensPromise);
+
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
   const gameId = useGameIdStore(store => store.gameId);
