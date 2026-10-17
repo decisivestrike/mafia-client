@@ -2,6 +2,10 @@
 
 import { Toast } from '@base-ui/react';
 import styles from './toast.module.css';
+import { cn } from '@/shared/lib/utils';
+import Button from '@/shared/ui/Button/Button';
+
+const toastButton = <Button />;
 
 export function ToastList() {
   const { toasts } = Toast.useToastManager();
@@ -16,16 +20,18 @@ export function ToastItem({ toast }: { toast: Toast.Root.ToastObject }) {
     pulseClassName = toast.updateKey % 2 === 0 ? styles.PulseEven : styles.PulseOdd;
   }
 
-  const className = [styles.Toast, pulseClassName].filter(Boolean).join(' ');
+  const className = cn(styles.Toast, pulseClassName);
 
   return (
     <Toast.Root key={toast.id} toast={toast} className={className}>
-      <Toast.Content>
-        <div>
-          <Toast.Title />
-          <Toast.Description />
+      <Toast.Content className={styles.Content}>
+        <div className={styles.Text}>
+          <Toast.Title className={styles.Title} />
+          <Toast.Description className={styles.Description} />
         </div>
-        <Toast.Close>Закрыть</Toast.Close>
+        <Toast.Close className={styles.Close} render={toastButton}>
+          Закрыть
+        </Toast.Close>
       </Toast.Content>
     </Toast.Root>
   );

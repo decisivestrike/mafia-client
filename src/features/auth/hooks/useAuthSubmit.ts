@@ -28,7 +28,9 @@ export function useAuthSubmit<T extends z.ZodType>(
           error = await apiFn(data);
         } catch {
           toastManager.add({
-            title: 'Ошибка сети',
+            id: 'network-error',
+            timeout: 4000,
+            title: 'Нет ответа',
             description: 'Проверьте соединение и попробуйте снова',
           });
           return;
@@ -38,7 +40,9 @@ export function useAuthSubmit<T extends z.ZodType>(
           router.replace(redirectTo);
         } else {
           toastManager.add({
-            title: 'Ошибка',
+            id: 'auth-error',
+            timeout: 4000,
+            title: 'Сервер прислал ошибку',
             description: error.detail,
           });
         }
