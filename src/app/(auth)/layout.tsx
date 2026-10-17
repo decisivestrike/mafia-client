@@ -1,7 +1,7 @@
-import styles from './layout.module.css';
+import { Center } from '@/shared/ui/Center/Center';
 
 import type { ReactNode } from 'react';
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
-  return <div className={styles.Layout}>{children}</div>;
+  return <Center>{children}</Center>;
 }

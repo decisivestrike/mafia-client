@@ -1,10 +1,3 @@
-import styles from './page.module.css';
-import { GameCreationForm } from '@/entities/game/features/game-creation/components/GameCreationForm';
+import { GameCreationPage } from '@/entities/game/features/game-creation/pages/GameCreationPage';
 
-export default function CreateLobbyPage() {
-  return (
-    <div className={styles.Wrapper}>
-      <GameCreationForm />
-    </div>
-  );
-}
+export default GameCreationPage;

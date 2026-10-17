@@ -1,9 +1,4 @@
 @layer layout {
-  .Wrapper {
-    margin: 0 auto;
-    max-width: 80rem;
-  }
-
   .Grid {
     display: grid;
     gap: 1.25rem;

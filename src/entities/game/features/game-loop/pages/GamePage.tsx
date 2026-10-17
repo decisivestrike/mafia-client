@@ -13,6 +13,7 @@ import { HttpError } from '@/shared/api/query';
 import { BASE_URL } from '@/shared/env';
 import { cn } from '@/shared/lib/utils';
 import { Button, Spinner } from '@/shared/ui';
+import { BoundedPage } from '@/shared/ui/BoundedPage/BoundedPage';
 import { Center } from '@/shared/ui/Center/Center';
 
 import type { Message } from '../events';
@@ -186,7 +187,7 @@ export function GamePage() {
   }
 
   return (
-    <div className={styles.Wrapper}>
+    <BoundedPage maxWidth="80rem">
       <div className={styles.Grid}>
         <div className={styles.MainArea}>
           {/* Players circle */}
@@ -232,7 +233,7 @@ export function GamePage() {
           <Button onClick={onLeaveButtonClick}>Выйти</Button>
         </div>
       </div>
-    </div>
+    </BoundedPage>
   );
 }
 

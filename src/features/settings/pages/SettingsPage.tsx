@@ -1,12 +1,12 @@
 import { ThemeSection } from '../components/ThemeSection';
-import styles from './settings-page.module.css';
+import { BoundedPage } from '@/shared/ui/BoundedPage/BoundedPage';
 import { Heading } from '@/shared/ui/Heading/Heading';
 
 export function SettingsPage() {
   return (
-    <div className={styles.Wrapper}>
+    <BoundedPage maxWidth="48rem">
       <Heading>Настройки</Heading>
       <ThemeSection />
-    </div>
+    </BoundedPage>
   );
 }
