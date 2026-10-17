@@ -12,11 +12,10 @@ import {
   maxPlayers,
   minPlayers,
 } from '@/entities/game/model/create-lobby-schema';
-import { useGameIdActions } from '@/entities/user/model/status-store/user-status-store';
+import { useGameIdActions } from '@/entities/game/stores/game-id-store';
 import { useFormErrors } from '@/shared/lib/forms/useFormErrors';
 import { Button, Field } from '@/shared/ui';
 import { Heading } from '@/shared/ui/Heading/Heading';
-import { MainPageWrapper } from '@/shared/ui/MainPageWrapper/MainPageWrapper';
 
 export function GameCreationForm() {
   const { formErrors, validateForm } = useFormErrors(createLobbySchema);
@@ -56,7 +55,7 @@ export function GameCreationForm() {
   );
 
   return (
-    <MainPageWrapper className={styles.Wrapper}>
+    <div className={styles.Wrapper}>
       <Heading>Создать игру</Heading>
       <Form errors={formErrors} onFormSubmit={onSubmit} className={styles.Form}>
         <Field.Root name="maxPlayers">
@@ -71,6 +70,6 @@ export function GameCreationForm() {
         </Field.Root>
         <Button type="submit">Создать</Button>
       </Form>
-    </MainPageWrapper>
+    </div>
   );
 }

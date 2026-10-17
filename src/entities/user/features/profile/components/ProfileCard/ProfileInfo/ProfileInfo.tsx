@@ -1,8 +1,8 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { profileInfoOptions } from '../../../api/get-profile-info';
 import styles from './profile-info.module.css';
+import { profileInfoOptions } from '@/entities/user/api/get-profile-info';
 import { Spinner } from '@/shared/ui';
 
 export default function ProfileInfo() {

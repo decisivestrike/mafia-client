@@ -2,7 +2,7 @@ html,
 body {
   height: 100%;
   color: var(--foreground);
-  overflow-x: hidden;
+  overflow: hidden;
   background-color: var(--background-primary);
 }
 
@@ -17,14 +17,6 @@ html {
 
 body {
   position: relative;
-
-  padding-top: 0rem;
-  padding-bottom: 4rem;
-
-  @media (width >= 1024px) {
-    padding-top: 3.5rem;
-    padding-bottom: 0rem;
-  }
 }
 
 h1,
