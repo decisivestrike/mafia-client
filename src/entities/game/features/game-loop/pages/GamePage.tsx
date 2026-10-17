@@ -7,7 +7,10 @@ import { use, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 import styles from './game-page.module.css';
 import { getLobbyOptions } from '@/entities/game/api/get-by-id';
-import { useGameIdStore } from '@/entities/user/model/status-store/useUserStatusStore';
+import {
+  useGameId,
+  useGameIdActions,
+} from '@/entities/user/model/status-store/user-status-store';
 import { tokenService } from '@/shared/api';
 import { HttpError } from '@/shared/api/query';
 import { BASE_URL } from '@/shared/env';
@@ -84,8 +87,8 @@ export function GamePage() {
 
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
-  const gameId = useGameIdStore(store => store.gameId);
-  const removeGameId = useGameIdStore(store => store.remove);
+  const gameId = useGameId();
+  const { removeGameId } = useGameIdActions();
 
   const [events, setEvents] = useState<Message[]>([]);
 

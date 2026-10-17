@@ -1,16 +1,5 @@
-import { createStore } from 'zustand/vanilla';
+import { atom, useAtomValue, useSetAtom } from 'jotai';
 import { deleteCookie, setCookie, type CookieOptions } from '@/shared/lib/cookie';
-
-export type GameIdState = {
-  gameId: string | null;
-};
-
-export type GameIdActions = {
-  set: (id: string) => void;
-  remove: () => void;
-};
-
-export type GameIdStore = GameIdState & GameIdActions;
 
 const cookieKeyName = 'gameId';
 
@@ -19,25 +8,25 @@ const cookieOptions: CookieOptions = {
   sameSite: 'Strict',
 };
 
-function setGameIdToCookie(id: string) {
-  setCookie(cookieKeyName, id, cookieOptions);
+const gameIdAtom = atom<string | null>(null);
+
+export function useGameIdActions() {
+  const setGameId = useSetAtom(gameIdAtom);
+
+  function removeGameId() {
+    setGameId(null);
+    deleteCookie(cookieKeyName, cookieOptions);
+  }
+
+  return {
+    setGameId: (id: string) => {
+      setGameId(id);
+      setCookie(cookieKeyName, id, cookieOptions);
+    },
+    removeGameId,
+  };
 }
 
-function removeGameIdFromCookie() {
-  deleteCookie(cookieKeyName, cookieOptions);
-}
-
-export function createGameIdStore() {
-  return createStore<GameIdStore>()(set => ({
-    gameId: null,
-
-    set: id => {
-      setGameIdToCookie(id);
-      return set({ gameId: id });
-    },
-    remove: () => {
-      removeGameIdFromCookie();
-      return set({ gameId: null });
-    },
-  }));
+export function useGameId() {
+  return useAtomValue(gameIdAtom);
 }
