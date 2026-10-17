@@ -20,11 +20,6 @@
   "sortPackageJson": {
     "sortScripts": true
   },
-  "sortTailwindcss": {
-    "functions": ["cn", "concat"],
-    "preserveWhitespace": false,
-    "stylesheet": "./src/_app/globals.css"
-  },
   "tabWidth": 2,
   "trailingComma": "all",
   "useTabs": false
