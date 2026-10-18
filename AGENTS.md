@@ -11,7 +11,7 @@
 - TanStack React Query
 - Zod
 - next-themes
-- Zustand
+- Jotai
 
 **Инструменты:**
 
