@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "tests",
+    "**/*spec.ts",
+    "**/*spec.tsx",
+    "**/*test.ts",
+    "**/*test.tsx",
+    "vitest.config.ts",
+    "playwright.config.ts"
+  ]
+}

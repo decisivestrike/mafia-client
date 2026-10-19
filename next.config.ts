@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   typedRoutes: true,
   typescript: {
     ignoreBuildErrors: false,
-    tsconfigPath: 'tsconfig.json',
+    tsconfigPath: 'tsconfig.build.json',
   },
   experimental: {
     typedEnv: true,
