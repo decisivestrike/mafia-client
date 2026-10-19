@@ -1,6 +1,6 @@
-import { fetchApi } from './utils';
+import { fetchApi } from './wrappers';
 
-import type { ApiError } from './error';
+import type { ApiError } from './errors';
 
 export interface AccessTokenResponse {
   accessToken: string;
