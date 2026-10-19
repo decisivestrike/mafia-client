@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query';
 import { fetchAuthorized } from '@/shared/api';
-import { createRequest } from '@/shared/api/query';
+import { createRequest } from '@/shared/api';
 
 import type { Game } from '../model/game';
 

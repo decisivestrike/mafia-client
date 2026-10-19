@@ -1,5 +1,5 @@
+import { fetchApi } from '@/shared/api';
 import { tokenService } from '@/shared/api/token-service';
-import { fetchApi } from '@/shared/api/utils';
 
 import type { LoginSchema } from '../model/schemas/login-schema';
 import type { AccessTokenResponse, ApiError } from '@/shared/api';

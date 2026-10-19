@@ -9,7 +9,7 @@ import styles from './game-page.module.css';
 import { getLobbyOptions } from '@/entities/game/api/get-by-id';
 import { useGameId, useGameIdActions } from '@/entities/game/stores/game-id-store';
 import { tokenService } from '@/shared/api';
-import { HttpError } from '@/shared/api/query';
+import { HttpError } from '@/shared/api';
 import { BASE_URL } from '@/shared/env';
 import { cn } from '@/shared/lib/utils';
 import { Button, Spinner } from '@/shared/ui';
