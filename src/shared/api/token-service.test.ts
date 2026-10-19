@@ -1,14 +1,10 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { RefreshError, TokenService } from './token-service';
 
 interface MockResponse {
   ok: boolean;
   status: number;
   json: () => Promise<{ detail?: string; accessToken?: string }>;
-}
-
-function mockFetch(response: MockResponse) {
-  return vi.fn().mockResolvedValue(response);
 }
 
 const successResponse: MockResponse = {
@@ -23,14 +19,7 @@ const errorResponse: MockResponse = {
   json: async () => ({ detail: 'Refresh token expired' }),
 };
 
-beforeEach(() => {
-  vi.stubEnv('NEXT_PUBLIC_BASE_URL', 'localhost:3000');
-});
-
-afterEach(() => {
-  vi.unstubAllEnvs();
-  vi.restoreAllMocks();
-});
+afterEach(() => vi.restoreAllMocks());
 
 describe('TokenService', () => {
   describe('getAccessToken / setAccessToken / deleteAccessToken', () => {
@@ -73,7 +62,7 @@ describe('TokenService', () => {
 
     it('calls refreshTokens when access token is null', async () => {
       const service = new TokenService();
-      const fetch = mockFetch(successResponse);
+      const fetch = vi.fn().mockResolvedValue(successResponse);
       vi.stubGlobal('fetch', fetch);
 
       const result = await service.loadTokens();
@@ -86,7 +75,7 @@ describe('TokenService', () => {
   describe('refreshTokens', () => {
     it('sends POST to /user/refresh with credentials include', async () => {
       const service = new TokenService();
-      const fetch = mockFetch(successResponse);
+      const fetch = vi.fn().mockResolvedValue(successResponse);
       vi.stubGlobal('fetch', fetch);
 
       await service.refreshTokens();
@@ -103,7 +92,7 @@ describe('TokenService', () => {
 
     it('stores and returns access token on success', async () => {
       const service = new TokenService();
-      const fetch = mockFetch(successResponse);
+      const fetch = vi.fn().mockResolvedValue(successResponse);
       vi.stubGlobal('fetch', fetch);
 
       const result = await service.refreshTokens();
@@ -115,7 +104,8 @@ describe('TokenService', () => {
     it('throws RefreshError on non-ok response and clears token', async () => {
       const service = new TokenService();
       service.setAccessToken('old-token');
-      const fetch = mockFetch(errorResponse);
+
+      const fetch = vi.fn().mockResolvedValue(errorResponse);
       vi.stubGlobal('fetch', fetch);
 
       await expect(service.refreshTokens()).rejects.toBeInstanceOf(RefreshError);

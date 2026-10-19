@@ -1,1 +1,1 @@
-export { useIsHydrated } from './useIsHydrated';
+export { useIsHydrated } from './hooks/useIsHydrated';
