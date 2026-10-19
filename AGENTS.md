@@ -50,6 +50,25 @@ Feature-Sliced Design (FSD). Слои сверху вниз:
 - Перед завершением: `npx oxlint --deny-warnings --format=agent`.
 - Конфиги: `.oxlintrc.json` (включая type-aware), `.oxfmtrc.json`.
 
+## Тестирование
+
+**Фреймворки:**
+
+- **Vitest** — модульное и интеграционное тестирование серверных и клиентских
+  компонентов, хуков, утилит, моделей и API.
+- **Playwright** — сквозное (e2e) тестирование UI, пользовательских сценариев и
+  кросс-браузерной совместимости.
+
+**Структура тестов:**
+
+- Тесты Vitest располагаются рядом с тестируемым модулем.
+- E2E-тесты Playwright — в `tests/` в корне проекта.
+
+**Команды:**
+
+- `npm run test` — запуск Vitest (unit/integration).
+- `npm run test:e2e` — запуск Playwright (e2e).
+
 ## Коммиты
 
 Conventional Commits. Пример: `feat(auth): add login form validation`.
