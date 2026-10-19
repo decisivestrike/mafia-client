@@ -4,6 +4,7 @@
 ![React](https://img.shields.io/badge/react-232730?style=for-the-badge&logo=react)
 ![Next JS](https://img.shields.io/badge/Next.js-232730?style=for-the-badge&logo=next.js)
 ![Base UI](https://img.shields.io/badge/baseui-232730?style=for-the-badge&logo=baseui)
+![Vitest](https://img.shields.io/badge/vitest-232730?style=for-the-badge&logo=vitest)
 
 Мафия — это игра в жанре социальной дедукции, где игроки делятся на команды мирных жителей и мафии, пытаясь распознать или скрыть свою роль через голосования и обсуждения.
 
