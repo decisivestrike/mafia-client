@@ -1,6 +1,6 @@
 import { ThemeSection } from '../components/ThemeSection';
-import { BoundedPage } from '@/shared/ui/BoundedPage/BoundedPage';
-import { Heading } from '@/shared/ui/Heading/Heading';
+import { BoundedPage } from '@/shared/ui/BoundedPage';
+import { Heading } from '@/shared/ui/Heading';
 
 export function SettingsPage() {
   return (

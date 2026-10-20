@@ -6,8 +6,8 @@ import { useCallback } from 'react';
 import styles from './logout.module.css';
 import { logout } from '@/features/auth';
 import { Button } from '@/shared/ui';
-import { Card } from '@/shared/ui/Card/Card';
-import { Center } from '@/shared/ui/Center/Center';
+import { Card } from '@/shared/ui/Card';
+import { Center } from '@/shared/ui/Center';
 
 const linkToProfile = <Link href="/profile" />;
 

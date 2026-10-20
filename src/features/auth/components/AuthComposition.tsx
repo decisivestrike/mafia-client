@@ -1,6 +1,6 @@
 import styles from './auth-composition.module.css';
 import { Separator } from '@/shared/ui';
-import { Card } from '@/shared/ui/Card/Card';
+import { Card } from '@/shared/ui/Card';
 
 import type { JSX } from 'react/jsx-runtime';
 

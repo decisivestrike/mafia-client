@@ -1,6 +1,6 @@
 import styles from './theme-section.module.css';
 import { ThemeToggleGroup } from '@/features/theme';
-import { Card } from '@/shared/ui/Card/Card';
+import { Card } from '@/shared/ui/Card';
 
 export function ThemeSection() {
   return (

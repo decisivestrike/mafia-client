@@ -1,5 +1,5 @@
 import { ToastProvider } from '@/features/toast';
-import { Center } from '@/shared/ui/Center/Center';
+import { Center } from '@/shared/ui/Center';
 
 import type { ReactNode } from 'react';
 

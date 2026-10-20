@@ -5,7 +5,7 @@ import styles from './lobby-list.module.css';
 import { LobbyCard } from './LobbyCard';
 import { getLobbiesOptions as getGamesOptions } from '@/entities/game/api/get-all';
 import { Spinner } from '@/shared/ui';
-import { Center } from '@/shared/ui/Center/Center';
+import { Center } from '@/shared/ui/Center';
 
 export function LobbyList() {
   const { data, error, isPending, isError } = useQuery(getGamesOptions);

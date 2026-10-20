@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from './not-found.module.css';
 import { Button } from '@/shared/ui';
-import { Center } from '@/shared/ui/Center/Center';
+import { Center } from '@/shared/ui/Center';
 
 const linkToMain = <Link href="/" />;
 

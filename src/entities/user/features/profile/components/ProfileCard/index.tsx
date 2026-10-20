@@ -1,8 +1,8 @@
 import styles from './profile-card.module.css';
-import { ProfileAvatar } from './ProfileAvatar/ProfileAvatar';
-import { ProfileButtons } from './ProfileButtons/ProfileButtons';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
-import { Card } from '@/shared/ui/Card/Card';
+import { ProfileAvatar } from './ProfileAvatar';
+import { ProfileButtons } from './ProfileButtons';
+import ProfileInfo from './ProfileInfo';
+import { Card } from '@/shared/ui/Card';
 
 export function ProfileCard() {
   return (

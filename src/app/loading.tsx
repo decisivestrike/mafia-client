@@ -1,5 +1,5 @@
 import { Spinner } from '@/shared/ui';
-import { Center } from '@/shared/ui/Center/Center';
+import { Center } from '@/shared/ui/Center';
 
 export default function RootLoading() {
   return (

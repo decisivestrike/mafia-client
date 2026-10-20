@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import styles from './layout.module.css';
 import { ToastProvider } from '@/features/toast';
-import { Navbar } from '@/widgets/Navbar/Navbar';
+import { Navbar } from '@/widgets/Navbar';
 
 interface Props {
   children: ReactNode;

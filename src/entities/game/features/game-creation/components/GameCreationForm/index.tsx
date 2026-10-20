@@ -16,7 +16,7 @@ import {
 import { useGameIdActions } from '@/entities/game/stores/game-id-store';
 import { useFormErrors } from '@/shared/lib/forms/useFormErrors';
 import { Button, Field } from '@/shared/ui';
-import { Card } from '@/shared/ui/Card/Card';
+import { Card } from '@/shared/ui/Card';
 
 export function GameCreationForm() {
   const { formErrors, validateForm } = useFormErrors(createLobbySchema);

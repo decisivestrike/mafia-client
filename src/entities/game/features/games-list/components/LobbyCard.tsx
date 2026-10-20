@@ -2,8 +2,8 @@
 
 import styles from './lobby-card.module.css';
 import { Button } from '@/shared/ui';
-import { Card } from '@/shared/ui/Card/Card';
-import { Separator } from '@/shared/ui/Separator/Separator';
+import { Card } from '@/shared/ui/Card';
+import { Separator } from '@/shared/ui/Separator';
 
 import type { Game } from '@/entities/game/model/game';
 

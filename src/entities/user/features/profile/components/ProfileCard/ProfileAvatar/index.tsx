@@ -2,7 +2,7 @@
 
 import { HatGlasses } from 'lucide-react';
 import styles from './profile-avatar.module.css';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Avatar } from '@/shared/ui/Avatar';
 
 export function ProfileAvatar() {
   return (

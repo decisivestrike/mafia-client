@@ -13,8 +13,8 @@ import { HttpError } from '@/shared/api';
 import { BASE_URL } from '@/shared/env';
 import { cn } from '@/shared/lib/utils';
 import { Button, Spinner } from '@/shared/ui';
-import { BoundedPage } from '@/shared/ui/BoundedPage/BoundedPage';
-import { Center } from '@/shared/ui/Center/Center';
+import { BoundedPage } from '@/shared/ui/BoundedPage';
+import { Center } from '@/shared/ui/Center';
 
 import type { Message } from '../events';
 import type { LobbyCommandPayload } from '../events/payloads';
