@@ -3,8 +3,6 @@
 
   /* IE и Edge */
   -ms-overflow-style: none;
-
-  overflow: scroll;
 }
 
 *::-webkit-scrollbar {
