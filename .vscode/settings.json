@@ -49,6 +49,7 @@
     "**/app/**/not-found.tsx": "${dirname(1)}/${dirname} - not-found.tsx",
     "**/app/**/page.tsx": "${dirname(1)}/${dirname} - page.tsx",
     "**/app/**/route.ts": "${dirname(1)}/${dirname} - route.ts",
-    "**/app/**/template.tsx": "${dirname(1)}/${dirname} - template.tsx"
+    "**/app/**/template.tsx": "${dirname(1)}/${dirname} - template.tsx",
+    "**/src/**/index.tsx": "${dirname}.${extname}" // Для удобства
   }
 }
