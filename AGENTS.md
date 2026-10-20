@@ -36,6 +36,8 @@ Feature-Sliced Design (FSD). Слои сверху вниз:
 
 ## Паттерны кода
 
+- Компоненты: директория `ComponentName/` с файлами `index.tsx` и
+  `component-name.module.css`.
 - Клиентские компоненты: `'use client'` в начале.
 - API-функции возвращают `SomeData | ApiError`, где `SomeData` — тип данных конкретной ручки. `ApiError = { details: string }`.
 - `export default` — только для page, layout (Next.js convention) и моделей. Всё остальное — именованные `export`.
