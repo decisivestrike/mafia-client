@@ -18,7 +18,6 @@ export function MobileNavbar() {
           <button
             key={item.path}
             className={`${styles.MobileItem} ${active ? styles.MobileItemActive : ''}`.trim()}
-            // oxlint-disable-next-line react-perf/jsx-no-new-function-as-prop
             onClick={() => router.push(item.path)}
             type="button"
           >

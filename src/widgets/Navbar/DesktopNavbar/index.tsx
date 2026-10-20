@@ -22,7 +22,6 @@ export function DesktopNavbar() {
                 key={item.path}
                 className={`${styles.NavButton} ${active ? styles.NavButtonActive : ''}`.trim()}
                 type="button"
-                // oxlint-disable-next-line react-perf/jsx-no-new-function-as-prop
                 onClick={() => router.push(item.path)}
               >
                 <Icon className={styles.NavIcon} strokeWidth={1.5} />
