@@ -1,4 +1,4 @@
-export { default as Button } from './Button/Button';
+export { default as Button } from './Button';
 export { Field } from './Field/Field';
 export { Spinner } from './Spinner/Spinner';
 export { Toggle } from './Toggle/Toggle';

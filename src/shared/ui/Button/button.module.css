@@ -10,7 +10,6 @@
     padding: 0 0.8rem;
     margin: 0;
     border-radius: 0;
-    font-size: 0.875rem;
     font-weight: 400;
     line-height: 1;
     white-space: nowrap;
@@ -66,5 +65,35 @@
     &:active:not([data-disabled]) {
       border-color: color-mix(in srgb, var(--foreground) 50%, transparent);
     }
+  }
+
+  .Text {
+    color: var(--muted-foreground);
+    background-color: transparent;
+    padding: 0;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+
+    @media (hover: hover) {
+      &:hover:not([data-disabled]) {
+        color: color-mix(in srgb, var(--foreground) 80%, transparent);
+      }
+    }
+
+    &:active:not([data-disabled]) {
+      color: var(--foreground);
+    }
+  }
+
+  .Small {
+    font-size: 0.75rem;
+  }
+
+  .Medium {
+    font-size: 0.875rem;
+  }
+
+  .Large {
+    font-size: 1rem;
   }
 }

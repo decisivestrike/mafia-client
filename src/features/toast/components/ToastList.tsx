@@ -3,7 +3,7 @@
 import { Toast } from '@base-ui/react';
 import styles from './toast.module.css';
 import { cn } from '@/shared/lib/utils';
-import Button from '@/shared/ui/Button/Button';
+import Button from '@/shared/ui/Button';
 
 const toastButton = <Button />;
 

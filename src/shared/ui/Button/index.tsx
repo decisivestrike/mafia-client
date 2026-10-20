@@ -8,19 +8,26 @@ const buttonVariant = cva(styles.Base, {
     variant: {
       primary: styles.Primary,
       secondary: styles.Secondary,
+      text: styles.Text,
+    },
+    size: {
+      small: styles.Small,
+      medium: styles.Medium,
+      large: styles.Large,
     },
   },
   defaultVariants: {
     variant: 'primary',
+    size: 'medium',
   },
 });
 
 export type ButtonProps = ButtonBase.Props & VariantProps<typeof buttonVariant>;
 
-export default function Button({ variant, className, ...props }: ButtonProps) {
+export default function Button({ variant, size, className, ...props }: ButtonProps) {
   return (
     <ButtonBase
-      className={cn(buttonVariant({ variant }), className as string)}
+      className={cn(buttonVariant({ variant, size }), className as string)}
       {...props}
     />
   );

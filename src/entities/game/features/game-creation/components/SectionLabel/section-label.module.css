@@ -1,0 +1,9 @@
+@layer components {
+  .SectionName {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
