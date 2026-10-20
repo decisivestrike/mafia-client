@@ -11,7 +11,7 @@ export type HeadingProps = {
 export function Heading({ className, children }: HeadingProps) {
   return (
     <div className={className ?? ''}>
-      <h1 className={styles.Heading}>{children}</h1>
+      <h1>{children}</h1>
       <Separator className={styles.Separator} />
     </div>
   );

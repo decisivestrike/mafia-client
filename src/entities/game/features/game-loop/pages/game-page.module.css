@@ -10,7 +10,7 @@
     align-items: flex-start;
     gap: 1rem;
     padding: 1.25rem;
-    background-color: var(--card);
+    background-color: var(--background-secondary);
     border: 1px solid var(--border);
     transition: border-color 0.3s;
 
@@ -99,7 +99,7 @@
 
   .PlayersPanel {
     padding: 1.25rem;
-    background-color: var(--card);
+    background-color: var(--background-secondary);
     border: 1px solid var(--border);
     transition: border-color 0.3s;
   }
@@ -336,7 +336,7 @@
     flex-direction: column;
     height: 32rem;
     padding: 1.25rem;
-    background-color: var(--card);
+    background-color: var(--background-secondary);
     border: 1px solid var(--border);
     transition: border-color 0.3s;
   }
