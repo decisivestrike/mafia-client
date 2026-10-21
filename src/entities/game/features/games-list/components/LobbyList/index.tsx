@@ -1,8 +1,8 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
+import { LobbyCard } from '../LobbyCard';
 import styles from './lobby-list.module.css';
-import { LobbyCard } from './LobbyCard';
 import { getLobbiesOptions as getGamesOptions } from '@/entities/game/api/get-all';
 import { Spinner } from '@/shared/ui';
 import { Center } from '@/shared/ui/Center';

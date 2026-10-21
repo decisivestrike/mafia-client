@@ -1,6 +1,8 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import styles from './lobby-card.module.css';
+import { useGameIdActions } from '@/entities/game/stores/game-id-store';
 import { Button } from '@/shared/ui';
 import { Card } from '@/shared/ui/Card';
 import { Separator } from '@/shared/ui/Separator';
@@ -29,7 +31,15 @@ function CardLine({ name, value }: { name: string; value: string }) {
 }
 
 export function LobbyCard({ lobby }: Props) {
+  const router = useRouter();
+  const { setGameId } = useGameIdActions();
+
   const adminName = getAdminName(lobby);
+
+  const connectToLobby = () => {
+    setGameId(lobby.id);
+    router.replace(`/game/${lobby.id}`);
+  };
 
   return (
     <Card className={styles.Root}>
@@ -40,7 +50,9 @@ export function LobbyCard({ lobby }: Props) {
         name="Игроки"
         value={`${lobby.participants.length} / ${lobby.maxPlayers}`}
       />
-      <Button className={styles.Button}>Войти</Button>
+      <Button className={styles.Button} onClick={connectToLobby}>
+        Войти
+      </Button>
     </Card>
   );
 }

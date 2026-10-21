@@ -1,81 +1,22 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { Skull, HatGlasses } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
 import { use, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
+import { PlayerNode } from '../components/PlayerNode';
 import styles from './game-page.module.css';
 import { getLobbyOptions } from '@/entities/game/api/get-by-id';
 import { useGameId, useGameIdActions } from '@/entities/game/stores/game-id-store';
 import { tokenService } from '@/shared/api';
 import { HttpError } from '@/shared/api';
 import { BASE_URL } from '@/shared/env';
-import { cn } from '@/shared/lib/utils';
 import { Button, Spinner } from '@/shared/ui';
 import { BoundedPage } from '@/shared/ui/BoundedPage';
 import { Center } from '@/shared/ui/Center';
 
 import type { Message } from '../events';
 import type { LobbyCommandPayload } from '../events/payloads';
-import type { User as UserModel } from '@/entities/user';
-
-type Player = UserModel & {
-  isDead: boolean;
-  role: any;
-};
-
-type PlayerNodeProps = {
-  player: Player;
-  isSelected: boolean;
-  positionStyle: React.CSSProperties;
-};
-
-function PlayerNode({ player, isSelected, positionStyle }: PlayerNodeProps) {
-  const hasVotes = isSelected && !player.isDead;
-
-  return (
-    <div className={styles.PlayerNode} style={positionStyle}>
-      <button
-        type="button"
-        disabled={player.isDead}
-        className={`${styles.PlayerButton} ${isSelected ? styles.PlayerButtonSelected : ''}`}
-      >
-        <div
-          className={cn(
-            styles.PlayerCard,
-            player.isDead
-              ? styles.PlayerCardDead
-              : isSelected
-                ? styles.PlayerCardSelected
-                : styles.PlayerCardAlive,
-          )}
-        >
-          <span className={styles.PlayerIcon}>
-            <HatGlasses />
-          </span>
-          <span
-            className={`${styles.PlayerName} ${isSelected ? styles.PlayerNameSelected : ''}`}
-          >
-            {player.name}
-          </span>
-        </div>
-
-        {hasVotes && (
-          <div className={styles.VoteBadge}>
-            <span className={styles.VoteCount}>1</span>
-          </div>
-        )}
-      </button>
-
-      {player.isDead && (
-        <div className={styles.DeadOverlay}>
-          <Skull className={styles.DeadIcon} />
-        </div>
-      )}
-    </div>
-  );
-}
 
 const loadTokensPromise = tokenService.loadTokens();
 
@@ -95,6 +36,10 @@ export function GamePage() {
     },
     onMessage(message) {
       const event = JSON.parse(message.data) as Message;
+
+      if (event.messageType) {
+      }
+
       setEvents(events => [...events, event]);
     },
     onClose(event) {
