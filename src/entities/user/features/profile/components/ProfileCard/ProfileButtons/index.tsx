@@ -13,14 +13,9 @@ export function ProfileButtons() {
   const toastManager = Toast.useToastManager();
   const [isPending, startTransition] = useTransition();
 
-  const notImplementedYet = useCallback(() => {
-    toastManager.add({
-      id: 'not-implemented',
-      timeout: 4000,
-      title: 'Хм… Не работает?!',
-      description: 'Мы это еще не реализовали',
-    });
-  }, [toastManager]);
+  const editProfile = useCallback(() => {
+    router.push('/profile/edit');
+  }, [router]);
 
   const logoutWithRedirect = useCallback(
     () =>
@@ -43,7 +38,7 @@ export function ProfileButtons() {
 
   return (
     <div className={styles.Actions}>
-      <Button onClick={notImplementedYet}>Редактировать</Button>
+      <Button onClick={editProfile}>Редактировать</Button>
       <Button variant="secondary" onClick={logoutWithRedirect} disabled={isPending}>
         <LogOut className={styles.LogoutIcon} />
         Выйти

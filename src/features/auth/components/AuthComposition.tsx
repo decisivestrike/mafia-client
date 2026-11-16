@@ -2,12 +2,12 @@ import styles from './auth-composition.module.css';
 import { Separator } from '@/shared/ui';
 import { Card } from '@/shared/ui/Card';
 
-import type { JSX } from 'react/jsx-runtime';
+import type { ReactNode } from 'react';
 
 type AuthCompositionProps = {
   subtitle: 'Вход' | 'Регистрация';
-  form: JSX.Element;
-  hint: JSX.Element;
+  form: ReactNode;
+  hint: ReactNode;
 };
 
 export function AuthComposition({ subtitle, form, hint }: AuthCompositionProps) {
