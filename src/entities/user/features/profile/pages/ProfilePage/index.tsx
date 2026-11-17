@@ -1,12 +1,12 @@
-import styles from './profile-page.module.css';
 import { ProfileCard } from '@/entities/user/features/profile/components/ProfileCard';
+import { BoundedPage } from '@/shared/ui/BoundedPage';
 import { Heading } from '@/shared/ui/Heading';
 
 export function ProfilePage() {
   return (
-    <div className={styles.Wrapper}>
+    <BoundedPage maxWidth="64rem">
       <Heading>Досье</Heading>
       <ProfileCard />
-    </div>
+    </BoundedPage>
   );
 }
