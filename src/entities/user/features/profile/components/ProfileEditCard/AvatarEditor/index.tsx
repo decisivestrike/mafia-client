@@ -3,8 +3,9 @@
 import { Toast } from '@base-ui/react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Camera, HatGlasses } from 'lucide-react';
-import { useCallback, useRef, type ChangeEvent } from 'react';
+import { useCallback, useRef, useState, type ChangeEvent } from 'react';
 import styles from './avatar-editor.module.css';
+import { AvatarCropDialog } from './AvatarCropDialog';
 import { AVATAR_ACCEPT, validateAvatarFile } from './validate-avatar-file';
 import { avatarOptions } from '@/entities/user/api/get-avatar';
 import { setAvatarOptions } from '@/entities/user/api/set-avatar';
@@ -17,13 +18,16 @@ export function AvatarEditor() {
   const toastManager = Toast.useToastManager();
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const [pendingFile, setPendingFile] = useState<File | null>(null);
+
   const { data: avatar } = useQuery(avatarOptions);
   const avatarUrl = useObjectUrl(avatar);
 
-  const { mutate: uploadAvatar, isPending } = useMutation({
+  const { mutate: uploadAvatar, isPending: isUploading } = useMutation({
     ...setAvatarOptions,
     onSuccess: uploadedAvatar => {
       queryClient.setQueryData(avatarOptions.queryKey, uploadedAvatar);
+      setPendingFile(null);
 
       toastManager.add({
         id: 'avatar-uploaded',
@@ -46,6 +50,17 @@ export function AvatarEditor() {
     inputRef.current?.click();
   }, []);
 
+  const closeCropDialog = useCallback(() => {
+    setPendingFile(null);
+  }, []);
+
+  const confirmCrop = useCallback(
+    (croppedAvatar: Blob) => {
+      uploadAvatar(croppedAvatar);
+    },
+    [uploadAvatar],
+  );
+
   const handleFileChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files?.[0];
@@ -66,10 +81,15 @@ export function AvatarEditor() {
         return;
       }
 
-      uploadAvatar(file);
+      setPendingFile(file);
     },
-    [toastManager, uploadAvatar],
+    [toastManager],
   );
+
+  const cropKey =
+    pendingFile === null
+      ? 'empty'
+      : `${pendingFile.name}:${pendingFile.size}:${pendingFile.lastModified}`;
 
   return (
     <div className={styles.Root}>
@@ -77,9 +97,9 @@ export function AvatarEditor() {
         type="button"
         className={styles.Trigger}
         onClick={openFilePicker}
-        disabled={isPending}
+        disabled={isUploading}
         aria-label="Изменить аватар"
-        aria-busy={isPending}
+        aria-busy={isUploading}
       >
         <Avatar.Root className={styles.Avatar}>
           {avatarUrl !== null && (
@@ -97,7 +117,11 @@ export function AvatarEditor() {
         </Avatar.Root>
 
         <span className={styles.Overlay}>
-          {isPending ? <Spinner className={styles.Spinner} /> : <Camera size={28} />}
+          {isUploading ? (
+            <Spinner className={styles.Spinner} />
+          ) : (
+            <Camera size={28} />
+          )}
         </span>
       </button>
 
@@ -108,6 +132,14 @@ export function AvatarEditor() {
         accept={AVATAR_ACCEPT}
         onChange={handleFileChange}
         tabIndex={-1}
+      />
+
+      <AvatarCropDialog
+        key={cropKey}
+        file={pendingFile}
+        isUploading={isUploading}
+        onCancel={closeCropDialog}
+        onConfirm={confirmCrop}
       />
     </div>
   );

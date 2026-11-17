@@ -1,9 +1,9 @@
 import { mutationOptions } from '@tanstack/react-query';
 import { fetchAuthorized, HttpError, parseApiError } from '@/shared/api';
 
-export async function setAvatar(file: File): Promise<Blob> {
+export async function setAvatar(avatar: Blob): Promise<Blob> {
   const formData = new FormData();
-  formData.append('file', file);
+  formData.append('file', avatar, 'avatar.png');
 
   const response = await fetchAuthorized('/user/avatar', {
     method: 'POST',
@@ -18,11 +18,11 @@ export async function setAvatar(file: File): Promise<Blob> {
 
   const blob = await response.blob();
 
-  if (blob.type === file.type) {
+  if (blob.type === avatar.type) {
     return blob;
   }
 
-  return new Blob([blob], { type: file.type });
+  return new Blob([blob], { type: avatar.type });
 }
 
 export const setAvatarOptions = mutationOptions({

@@ -1,7 +1,7 @@
 @layer components {
   .Viewport {
     position: fixed;
-    z-index: 2;
+    z-index: 20;
 
     right: 2rem;
     bottom: 2rem;

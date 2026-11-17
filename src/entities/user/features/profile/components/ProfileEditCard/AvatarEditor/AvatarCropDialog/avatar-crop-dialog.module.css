@@ -1,0 +1,119 @@
+@layer components {
+  .Backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background-color: color-mix(in srgb, black 65%, transparent);
+  }
+
+  .Viewport {
+    position: fixed;
+    inset: 0;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow-y: auto;
+
+    @media (height < 44rem) {
+      align-items: flex-start;
+    }
+  }
+
+  .Popup {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: min(100%, 26rem);
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    background-color: var(--background-secondary);
+    box-shadow: 0.5rem 0.5rem 0 rgb(0 0 0 / 20%);
+  }
+
+  .Title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+
+  .Description {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--muted-foreground);
+  }
+
+  .Stage {
+    position: relative;
+    align-self: center;
+    width: min(100%, 22rem);
+    aspect-ratio: 1;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+    user-select: none;
+    background-color: var(--background-tertiary);
+  }
+
+  .Stage:active {
+    cursor: grabbing;
+  }
+
+  .Image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: none;
+    max-height: none;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    will-change: transform;
+  }
+
+  .ImageReady {
+    opacity: 1;
+  }
+
+  .Loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Zoom {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .ZoomLabel {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  .ZoomInput {
+    width: 100%;
+    accent-color: var(--primary);
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  .Actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
+}

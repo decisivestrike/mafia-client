@@ -20,8 +20,8 @@ export function ProfileEditCard() {
         <div className={styles.Label}>Аватар</div>
         <AvatarEditor />
         <p className={styles.Hint}>
-          Нажмите на аватар, чтобы загрузить изображение. Поддерживаются JPG, PNG,
-          WebP и GIF.
+          Нажмите на аватар, чтобы загрузить изображение. Поддерживаются JPG, PNG и
+          WebP, итоговый аватар — до 5 МБ.
         </p>
       </section>
 
