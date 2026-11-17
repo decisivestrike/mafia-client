@@ -24,6 +24,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictNullChecks": true,
     "target": "es2022",
     "verbatimModuleSyntax": true
   },
