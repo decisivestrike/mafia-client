@@ -13,15 +13,13 @@ export function ProfileAvatar() {
 
   return (
     <Avatar.Root className={styles.Avatar}>
-      {avatarUrl !== null && (
-        <Avatar.Image
-          src={avatarUrl}
-          alt="Аватар"
-          width="128"
-          height="128"
-          className={styles.Avatar}
-        />
-      )}
+      <Avatar.Image
+        src={avatarUrl}
+        alt="Аватар"
+        width="128"
+        height="128"
+        className={styles.Avatar}
+      />
       <Avatar.Fallback>
         <HatGlasses size={64} color="lightgray" />
       </Avatar.Fallback>

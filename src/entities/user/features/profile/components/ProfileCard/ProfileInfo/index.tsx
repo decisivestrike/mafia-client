@@ -19,7 +19,7 @@ export default function ProfileInfo() {
   return (
     <div className={styles.Info}>
       <div className={styles.Label}>Оперативный псевдоним</div>
-      <h1>{user.name}</h1>
+      <span className={styles.Name}>{user.name}</span>
     </div>
   );
 }

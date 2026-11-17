@@ -24,4 +24,9 @@
     font-size: 0.75rem;
     line-height: 1rem;
   }
+
+  .Name {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+  }
 }
