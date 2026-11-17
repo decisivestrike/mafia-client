@@ -1,17 +1,16 @@
 'use client';
 
 import { Toast } from '@base-ui/react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Camera, HatGlasses } from 'lucide-react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Camera } from 'lucide-react';
 import { useCallback, useRef, useState, type ChangeEvent } from 'react';
 import styles from './avatar-editor.module.css';
 import { AvatarCropDialog } from './AvatarCropDialog';
 import { AVATAR_ACCEPT, validateAvatarFile } from './validate-avatar';
 import { avatarOptions } from '@/entities/user/api/get-avatar';
 import { setAvatarOptions } from '@/entities/user/api/set-avatar';
-import { useObjectUrl } from '@/shared/lib';
+import { UserAvatar } from '@/entities/user/components/UserAvatar';
 import { Spinner } from '@/shared/ui';
-import { Avatar } from '@/shared/ui/Avatar';
 
 export function AvatarEditor() {
   const queryClient = useQueryClient();
@@ -19,9 +18,6 @@ export function AvatarEditor() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [pendingFile, setPendingFile] = useState<File | null>(null);
-
-  const { data: avatar } = useQuery(avatarOptions);
-  const avatarUrl = useObjectUrl(avatar);
 
   const { mutate: uploadAvatar, isPending: isUploading } = useMutation({
     ...setAvatarOptions,
@@ -101,18 +97,7 @@ export function AvatarEditor() {
         aria-label="Изменить аватар"
         aria-busy={isUploading}
       >
-        <Avatar.Root className={styles.Avatar}>
-          <Avatar.Image
-            src={avatarUrl}
-            alt="Аватар"
-            width="160"
-            height="160"
-            className={styles.Image}
-          />
-          <Avatar.Fallback>
-            <HatGlasses size={72} color="lightgray" />
-          </Avatar.Fallback>
-        </Avatar.Root>
+        <UserAvatar size="large" />
 
         <span className={styles.Overlay}>
           {isUploading ? (
