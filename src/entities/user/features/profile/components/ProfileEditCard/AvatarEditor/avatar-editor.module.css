@@ -49,6 +49,10 @@
     transition: opacity 0.2s ease-in-out;
   }
 
+  .OverlayIcon {
+    background-color: transparent;
+  }
+
   .Trigger:hover .Overlay,
   .Trigger:focus-visible .Overlay,
   .Trigger[aria-busy='true'] .Overlay {

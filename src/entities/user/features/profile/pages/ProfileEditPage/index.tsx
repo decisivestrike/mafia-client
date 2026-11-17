@@ -1,4 +1,4 @@
-import { ProfileEditCard } from '../components/ProfileEditCard';
+import { ProfileEditCard } from '../../components/ProfileEditCard';
 import { BoundedPage } from '@/shared/ui/BoundedPage';
 import { Heading } from '@/shared/ui/Heading';
 

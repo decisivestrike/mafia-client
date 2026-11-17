@@ -2,7 +2,7 @@
 
 import { Dialog, Toast } from '@base-ui/react';
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { validateCroppedAvatar } from '../validate-cropped-avatar';
+import { validateCroppedAvatar } from '../validate-avatar';
 import styles from './avatar-crop-dialog.module.css';
 import { cropImageToSquare } from './crop-image';
 import { getCropGeometry, MAX_CROP_ZOOM, MIN_CROP_ZOOM } from './get-crop-geometry';

@@ -6,7 +6,7 @@ import { Camera, HatGlasses } from 'lucide-react';
 import { useCallback, useRef, useState, type ChangeEvent } from 'react';
 import styles from './avatar-editor.module.css';
 import { AvatarCropDialog } from './AvatarCropDialog';
-import { AVATAR_ACCEPT, validateAvatarFile } from './validate-avatar-file';
+import { AVATAR_ACCEPT, validateAvatarFile } from './validate-avatar';
 import { avatarOptions } from '@/entities/user/api/get-avatar';
 import { setAvatarOptions } from '@/entities/user/api/set-avatar';
 import { useObjectUrl } from '@/shared/lib';
@@ -102,15 +102,13 @@ export function AvatarEditor() {
         aria-busy={isUploading}
       >
         <Avatar.Root className={styles.Avatar}>
-          {avatarUrl !== null && (
-            <Avatar.Image
-              src={avatarUrl}
-              alt="Аватар"
-              width="160"
-              height="160"
-              className={styles.Image}
-            />
-          )}
+          <Avatar.Image
+            src={avatarUrl}
+            alt="Аватар"
+            width="160"
+            height="160"
+            className={styles.Image}
+          />
           <Avatar.Fallback>
             <HatGlasses size={72} color="lightgray" />
           </Avatar.Fallback>
@@ -120,7 +118,7 @@ export function AvatarEditor() {
           {isUploading ? (
             <Spinner className={styles.Spinner} />
           ) : (
-            <Camera size={28} />
+            <Camera size={28} className={styles.OverlayIcon} />
           )}
         </span>
       </button>

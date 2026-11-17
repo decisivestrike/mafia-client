@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { validateAvatarFile } from './validate-avatar-file';
-import { MAX_AVATAR_SIZE, validateCroppedAvatar } from './validate-cropped-avatar';
+import {
+  validateAvatarFile,
+  MAX_AVATAR_SIZE,
+  validateCroppedAvatar,
+} from './validate-avatar';
 
 function createFile(type: string, size = 1) {
   return new File([new Uint8Array(size)], 'avatar', { type });
